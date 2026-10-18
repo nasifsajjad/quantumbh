@@ -3,6 +3,7 @@ const config: NextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
   devIndicators: false,
+  images: { qualities: [75, 90] },
   async headers() {
     return [
       {

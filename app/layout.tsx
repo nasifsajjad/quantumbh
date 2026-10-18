@@ -34,8 +34,7 @@ export const metadata: Metadata = {
     locale: "en_BH",
     siteName: "Quantum Software Solutions",
     title: "Quantum Software Solutions",
-    description:
-      "Business software. A simpler way forward. Based in Bahrain, serving the GCC.",
+    description: "Cloud business software for Bahrain and the GCC.",
   },
   twitter: {
     card: "summary",
@@ -45,7 +44,7 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 export const viewport: Viewport = {
-  themeColor: "#f7f7f2",
+  themeColor: "#f7f6f2",
   width: "device-width",
   initialScale: 1,
 };

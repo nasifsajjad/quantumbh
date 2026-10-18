@@ -64,7 +64,7 @@ Automatic server-side email delivery is not connected. To enable it, connect an 
 
 ## Product visuals
 
-The software imagery and ERP explorer are labelled conceptual visuals with illustrative data. Replace them with actual product screenshots when available.
+The software imagery and ERP explorer are labelled conceptual visuals with illustrative data. Replace them with actual product screenshots when available. Editorial photographs are illustrative scenes, not photographs of Quantum staff or customers.
 
 ## Checks
 

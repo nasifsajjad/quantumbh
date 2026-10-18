@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, MapPin } from "lucide-react";
-import { ContactCTA, SectionLabel, TextLink } from "@/components/ui";
+import { ArrowUpRight } from "lucide-react";
+import { ContactCTA } from "@/components/ui";
+import { Heading } from "@/components/heading";
 import { company } from "@/lib/content";
 export const metadata: Metadata = {
   title: "About Quantum · Bahrain-Based Business Software",
   description:
-    "Meet Quantum Software Solutions WLL. Established in Bahrain in 2026, providing practical business software for organisations across Bahrain and the GCC.",
+    "Quantum Software Solutions WLL. Established in Bahrain in 2026, providing practical business software for Bahrain and the GCC.",
   alternates: { canonical: "/about" },
   openGraph: { url: "/about", title: "About Quantum" },
 };
@@ -18,177 +19,88 @@ export default function About() {
         <div className="breadcrumbs">
           <Link href="/">Home</Link>
           <span>/</span>
-          <span>About Quantum</span>
+          <span>About</span>
         </div>
-        <span className="eyebrow">A LITTLE ABOUT US</span>
-        <h1>
-          Progress through
-          <br />
-          <span>intelligent simplicity.</span>
-        </h1>
-        <div className="about-hero-bottom">
-          <span>
-            BAHRAIN BASED.
-            <br />
-            GCC FOCUSED.
-          </span>
+        <div className="about-opening">
+          <div>
+            <span className="eyebrow">Quantum Software Solutions</span>
+            <Heading lines={["A local company.", "A practical purpose."]} />
+          </div>
           <p>
-            We’re Quantum Software Solutions. We believe business software
-            should bring clarity to your day, and make the important work easier
-            to manage.
+            Business software for the accounts, people and operations that keep
+            organisations moving.
           </p>
         </div>
       </section>
-      <section className="about-panorama">
+      <div className="about-panorama" data-parallax="0.1">
         <Image
           src="/images/bahrain.webp"
-          alt="Illustrative morning view across the Manama waterfront in Bahrain"
+          alt="Illustrative view of the Manama waterfront, Bahrain"
           fill
           priority
           sizes="100vw"
+          className="parallax-image"
         />
-        <div className="about-panorama-caption">
-          <span>
-            <MapPin size={15} />
-            KINGDOM OF BAHRAIN
-          </span>
-          <span>OUR HOME. OUR STARTING POINT.</span>
-        </div>
-      </section>
+      </div>
       <section className="about-story section-pad">
-        <div className="container">
-          <SectionLabel number="01 / WHO WE ARE">
-            SOFTWARE WITH A PRACTICAL PURPOSE
-          </SectionLabel>
-          <div className="overview-grid" data-reveal>
-            <h2>
-              A local company.
-              <br />A clear focus.
-            </h2>
-            <div>
-              <p>
-                Established in 2026, Quantum Software Solutions WLL is a
-                Bahrain-based software and technology company serving businesses
-                and organisations in Bahrain and the wider GCC.
-              </p>
-              <p>
-                Our focus is practical business software: systems that help
-                organisations manage their finances, people, information, and
-                day-to-day operations.
-              </p>
-              <p>
-                From ERP and accounting to school management, healthcare
-                systems, software development, and AI, we bring several
-                business-software areas together through one company.
-              </p>
-            </div>
+        <div className="container about-story-grid">
+          <div className="established" data-reveal>
+            <span className="eyebrow">Established in Bahrain</span>
+            <span className="established-year">2026</span>
           </div>
-          <div className="company-facts" data-reveal>
-            <div>
-              <span>Established</span>
-              <strong>2026</strong>
-            </div>
-            <div>
-              <span>Based in</span>
-              <strong>Bahrain</strong>
-            </div>
-            <div>
-              <span>Our focus</span>
-              <strong>The GCC</strong>
-            </div>
-            <div>
-              <span>Commercial Registration</span>
-              <strong>197818-1</strong>
-            </div>
+          <div data-reveal>
+            <h2>
+              Here for the
+              <br />
+              everyday work.
+            </h2>
+            <p>
+              Quantum Software Solutions WLL is a Bahrain-based software company
+              serving organisations in Bahrain and the GCC.
+            </p>
+            <p>
+              We provide cloud business systems, custom software development,
+              and AI solutions and support. Our focus is simple: useful software
+              that helps your organisation work more efficiently.
+            </p>
           </div>
         </div>
       </section>
       <section className="purpose-section section-pad">
-        <div className="container">
-          <SectionLabel number="02 / WHAT GUIDES US">
-            PURPOSE, WITH BOTH FEET ON THE GROUND
-          </SectionLabel>
-          <div className="purpose-grid">
-            <article data-reveal>
-              <span className="eyebrow">OUR MISSION</span>
-              <h2>
-                Make the day-to-day
-                <br />
-                work simpler.
-              </h2>
-              <p>
-                Provide smart, reliable cloud software that helps organisations
-                simplify operations, improve productivity, and support their
-                growth.
-              </p>
-            </article>
-            <article data-reveal>
-              <span className="eyebrow">OUR VISION</span>
-              <h2>
-                Help the region
-                <br />
-                work better.
-              </h2>
-              <p>
-                Become a trusted regional provider of intelligent cloud
-                solutions that improve how businesses and institutions operate.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-      <section className="section-pad about-approach">
-        <div className="container">
-          <SectionLabel number="03 / OUR APPROACH">
-            KEEPING THE IMPORTANT THINGS IN FOCUS
-          </SectionLabel>
-          <div className="section-heading-row" data-reveal>
+        <div className="container purpose-grid" data-stagger>
+          <article data-reveal>
+            <span className="eyebrow">Our mission</span>
+            <h2>Make work simpler.</h2>
+            <p>
+              Provide reliable cloud software that simplifies operations,
+              improves productivity and supports organisational growth.
+            </p>
+          </article>
+          <article data-reveal>
+            <span className="eyebrow">Our vision</span>
             <h2>
-              Good software begins
+              Help the region
               <br />
-              with understanding.
+              work better.
             </h2>
-            <TextLink href="/#solutions">Explore our solutions</TextLink>
-          </div>
-          <div className="principle-grid" data-reveal>
-            <article>
-              <span className="small-index">01</span>
-              <h3>Practical by purpose.</h3>
-              <p>
-                Focus on the everyday work of your business and the systems that
-                help it run.
-              </p>
-            </article>
-            <article>
-              <span className="small-index">02</span>
-              <h3>Simplicity matters.</h3>
-              <p>
-                Make useful information accessible and bring more structure to
-                operational work.
-              </p>
-            </article>
-            <article>
-              <span className="small-index">03</span>
-              <h3>Closer to the context.</h3>
-              <p>
-                Bring a Bahrain-based perspective to the needs of businesses and
-                institutions across the GCC.
-              </p>
-            </article>
-          </div>
+            <p>
+              Become a trusted regional provider of intelligent software that
+              improves how businesses and institutions operate.
+            </p>
+          </article>
         </div>
       </section>
-      <section className="office-section">
+      <section className="office-section section-pad">
         <div className="container office-grid">
-          <div>
-            <span className="eyebrow">FIND US IN BAHRAIN</span>
+          <div data-reveal>
+            <span className="eyebrow">Our office</span>
             <h2>
-              Let’s talk,
+              Find us in
               <br />
-              <span>locally.</span>
+              Al Hidd.
             </h2>
           </div>
-          <div>
+          <div data-reveal>
             <address>
               {company.address.map((l) => (
                 <span key={l}>{l}</span>
@@ -200,11 +112,11 @@ export default function About() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              View area on Google Maps
+              View on Google Maps
               <ArrowUpRight size={18} />
             </a>
-            <p>
-              Quantum Software Solutions WLL
+            <p className="office-legal">
+              {company.name}
               <br />
               CR {company.cr}
             </p>

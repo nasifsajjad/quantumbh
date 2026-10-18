@@ -10,21 +10,19 @@ export function Footer() {
           <div className="footer-brand">
             <Brand inverse />
             <p>
-              Empowering progress through
+              Bahrain based.
               <br />
-              intelligent simplicity.
+              GCC focused.
             </p>
-            <span className="eyebrow">BAHRAIN BASED. GCC FOCUSED.</span>
           </div>
           <div className="footer-nav">
-            <span className="footer-label">Explore</span>
-            <Link href="/">Home</Link>
-            <Link href="/about">About Quantum</Link>
+            <span className="footer-label">Quantum</span>
+            <Link href="/about">About us</Link>
             <Link href="/contact">Contact</Link>
             <Link href="/contact?intent=demo">Request a demo</Link>
           </div>
           <div className="footer-solutions">
-            <span className="footer-label">Our solutions</span>
+            <span className="footer-label">Solutions</span>
             {solutions.map((s) => (
               <Link key={s.slug} href={solutionHref(s.slug)}>
                 {s.name}
@@ -32,10 +30,9 @@ export function Footer() {
             ))}
           </div>
           <div className="footer-contact">
-            <span className="footer-label">Let’s talk</span>
             <a href={`mailto:${company.email}`}>
               {company.email}
-              <ArrowUpRight size={16} />
+              <ArrowUpRight size={17} />
             </a>
             <a href={`tel:${company.phoneHref}`}>{company.phone}</a>
             <address>
@@ -45,17 +42,15 @@ export function Footer() {
             </address>
           </div>
         </div>
-        <div className="footer-wordmark" aria-hidden="true">
-          Quantum<span>+</span>
-        </div>
         <div className="footer-bottom">
           <span>
             © {new Date().getFullYear()} Quantum Software Solutions WLL
           </span>
           <span>CR {company.cr}</span>
-          <Link href="/contact#privacy">Privacy & enquiries</Link>
+          <Link href="/contact#privacy">Privacy</Link>
           <a href="#top" className="back-top">
-            Back to top <ArrowUpRight size={15} />
+            Back to top
+            <ArrowUpRight size={14} />
           </a>
         </div>
       </div>

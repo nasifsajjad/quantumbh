@@ -115,7 +115,6 @@ export function Header() {
             </Link>
           </nav>
           <div className="header-actions">
-            <span className="header-location">BAHRAIN · GCC</span>
             <Link href={demoHref()} className="button button-dark header-cta">
               Request a demo <ArrowUpRight size={17} />
             </Link>
@@ -134,12 +133,8 @@ export function Header() {
         {open && (
           <div className="mega-menu" id="solutions-menu">
             <div className="mega-intro">
-              <span className="eyebrow">OUR SOLUTIONS</span>
-              <p>
-                Built around
-                <br />
-                your business.
-              </p>
+              <span className="eyebrow">Solutions</span>
+              <p>Solutions.</p>
               <Link
                 href="/#solutions"
                 onClick={() => setOpen(false)}
@@ -149,7 +144,7 @@ export function Header() {
               </Link>
             </div>
             <div className="mega-group">
-              <span className="eyebrow">BUSINESS SYSTEMS</span>
+              <span className="eyebrow">Business systems</span>
               {solutions
                 .filter((s) => s.category === "systems")
                 .map((s) => (
@@ -160,7 +155,7 @@ export function Header() {
                 ))}
             </div>
             <div className="mega-group">
-              <span className="eyebrow">DEVELOPMENT & AI</span>
+              <span className="eyebrow">Development & AI</span>
               {solutions
                 .filter((s) => s.category === "services")
                 .map((s) => (
@@ -172,7 +167,7 @@ export function Header() {
               <p className="mega-note">
                 Not sure where to start?
                 <br />
-                <Link href="/contact">Let’s talk about your needs.</Link>
+                <Link href="/contact">Talk to our team.</Link>
               </p>
             </div>
           </div>

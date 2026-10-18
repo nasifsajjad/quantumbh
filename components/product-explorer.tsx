@@ -1,19 +1,12 @@
 "use client";
 import { useState } from "react";
-import Link from "next/link";
-import {
-  ArrowUpRight,
-  ChevronRight,
-  FileText,
-  Layers3,
-  BarChart3,
-} from "lucide-react";
+import { ChevronRight, FileText, Layers3, BarChart3 } from "lucide-react";
 const views = [
   {
     label: "Accounting",
     icon: FileText,
-    heading: "Know what’s coming in. And going out.",
-    text: "Keep invoices, receivables, payables, and your general ledger organised. A clearer foundation for your financial decisions.",
+    heading: "Keep your accounts in order.",
+    text: "General ledger, invoices, receivables and payables.",
     tags: ["General ledger", "Invoicing", "Receivables & payables"],
     title: "Invoices",
     sub: "A simple view of outstanding and settled transactions.",
@@ -28,8 +21,8 @@ const views = [
   {
     label: "Inventory",
     icon: Layers3,
-    heading: "A closer view of every stock movement.",
-    text: "Follow inventory, review valuation, and keep low-stock alerts in view. Bring more clarity to the goods your business relies on.",
+    heading: "Know what’s in stock.",
+    text: "Stock movements, valuation and low-stock alerts.",
     tags: ["Stock movements", "Low-stock alerts", "Inventory valuation"],
     title: "Inventory",
     sub: "Stock quantities and alerts, kept in view.",
@@ -44,8 +37,8 @@ const views = [
   {
     label: "Reporting",
     icon: BarChart3,
-    heading: "See the detail. Understand the picture.",
-    text: "Turn everyday records into useful financial and operational reporting. Review cash flow and business performance with more context.",
+    heading: "See how the business is doing.",
+    text: "Financial dashboards, cash flow and operational reporting.",
     tags: [
       "Financial dashboards",
       "Cash-flow monitoring",
@@ -83,24 +76,9 @@ export function ProductExplorer({ compact = false }: { compact?: boolean }) {
       className={`product-explorer section-pad ${compact ? "compact-explorer" : ""}`}
     >
       <div className="container">
-        <div className="section-label">
-          <span className="eyebrow">ERP & ACCOUNTING</span>
-          <span className="section-number">A CLOSER LOOK</span>
-        </div>
-        {!compact && (
-          <div className="section-heading-row" data-reveal>
-            <h2>
-              A clearer view
-              <br />
-              of your business.
-            </h2>
-            <p>
-              Keep the details connected.
-              <br />
-              See what matters, sooner.
-            </p>
-          </div>
-        )}
+        <h2 className="explorer-heading" data-reveal>
+          A closer look.
+        </h2>
         <div className="explorer-layout" data-reveal>
           <div className="explorer-info">
             <div
@@ -127,15 +105,6 @@ export function ProductExplorer({ compact = false }: { compact?: boolean }) {
             <div className="explorer-copy" key={view.label}>
               <h3>{view.heading}</h3>
               <p>{view.text}</p>
-              <ul className="feature-pills">
-                {view.tags.map((t) => (
-                  <li key={t}>{t}</li>
-                ))}
-              </ul>
-              <Link className="text-link" href="/solutions/erp-accounting">
-                Explore ERP & Accounting
-                <ArrowUpRight size={18} />
-              </Link>
             </div>
           </div>
           <div
@@ -155,7 +124,6 @@ export function ProductExplorer({ compact = false }: { compact?: boolean }) {
                 />
                 Quantum
               </span>
-              <span className="concept-label">CONCEPT PREVIEW</span>
             </div>
             <div className="software-body">
               <div className="software-breadcrumb">
@@ -231,16 +199,11 @@ export function ProductExplorer({ compact = false }: { compact?: boolean }) {
                   </tbody>
                 </table>
               </div>
-              <div className="software-footnote">
-                <span>Illustrative interface · Sample data</span>
-                <span>01 — 04</span>
-              </div>
             </div>
           </div>
         </div>
         <p className="concept-disclaimer">
-          Conceptual interface illustrating confirmed capabilities. Actual
-          product appearance may differ.
+          Illustrative interface using sample data.
         </p>
       </div>
     </section>

@@ -30,15 +30,13 @@ export function EnquiryForm({
     });
     setTimeout(
       () =>
-        document
-          .getElementById("enquiry-ready")
-          ?.scrollIntoView({
-            behavior: window.matchMedia("(prefers-reduced-motion: reduce)")
-              .matches
-              ? "instant"
-              : "smooth",
-            block: "center",
-          }),
+        document.getElementById("enquiry-ready")?.scrollIntoView({
+          behavior: window.matchMedia("(prefers-reduced-motion: reduce)")
+            .matches
+            ? "instant"
+            : "smooth",
+          block: "center",
+        }),
       50,
     );
   }
@@ -59,14 +57,6 @@ export function EnquiryForm({
           </button>
         ))}
       </div>
-      <h2>
-        {kind === "Request a demo"
-          ? "Let’s find your fit."
-          : "What’s on your mind?"}
-      </h2>
-      <p className="form-intro">
-        A few details help us start a useful conversation.
-      </p>
       <form
         onSubmit={submit}
         onChange={() => {
@@ -144,11 +134,11 @@ export function EnquiryForm({
           </select>
         </label>
         <label htmlFor="message">
-          Tell us a little about your needs <span>*</span>
+          How can we help? <span>*</span>
           <textarea
             id="message"
             name="message"
-            placeholder="What would you like to make simpler?"
+            placeholder="Tell us what you’re looking for."
             rows={4}
             required
             maxLength={4000}
@@ -157,18 +147,17 @@ export function EnquiryForm({
         <label className="consent-label">
           <input name="consent" type="checkbox" required />
           <span>
-            I agree to share these details with Quantum to discuss my enquiry.{" "}
-            <a href="#privacy">Privacy & enquiries</a>
+            I agree to share these details with Quantum.{" "}
+            <a href="#privacy">Privacy</a>
           </span>
         </label>
         <button type="submit" className="button button-dark form-submit">
-          Prepare my enquiry
+          Create email draft
           <ArrowUpRight size={19} />
         </button>
         <p className="form-delivery-note">
           <Mail size={15} />
-          Your enquiry opens as an email draft. Review and send it from your
-          email app.
+          Review and send your enquiry through your email app.
         </p>
       </form>
       {draft && (
