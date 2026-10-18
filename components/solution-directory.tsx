@@ -6,18 +6,19 @@ import { solutionHref, solutions } from "@/lib/content";
 const groups = [
   {
     name: "Business systems",
-    description: "Bring the core work of your business into better order.",
+    description:
+      "Software for your finances, employees and sales administration.",
     slugs: ["erp-accounting", "hr-management", "sales-automation"],
   },
   {
     name: "Healthcare & education",
-    description:
-      "Software for the people and processes behind your institution.",
+    description: "Management systems for hospitals, clinics and schools.",
     slugs: ["hospital-management", "school-management"],
   },
   {
     name: "Software development & AI",
-    description: "Start with a business need. Discuss a solution around it.",
+    description:
+      "Discuss custom business software or an AI-related requirement.",
     slugs: ["software-development", "ai-solutions-support"],
   },
 ];
@@ -40,7 +41,7 @@ export function SolutionDirectory() {
       <div className="container">
         <div className="section-intro" data-reveal>
           <span className="eyebrow">Our solutions</span>
-          <h2>Software for the work that matters.</h2>
+          <h2>Find the right solution.</h2>
           <p>
             From your accounts to your people, explore practical systems and
             services for businesses and institutions in Bahrain and the GCC.

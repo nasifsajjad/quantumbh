@@ -11,29 +11,6 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
   openGraph: { url: "/" },
 };
-const sectors = [
-  {
-    label: "Business",
-    title: "Keep finance and operations in order.",
-    text: "Accounting, stock and transaction management for retail, wholesale, manufacturing and service businesses. Keep the information behind everyday decisions in view.",
-    href: "/solutions/erp-accounting",
-    link: "ERP & Accounting",
-  },
-  {
-    label: "Healthcare",
-    title: "Support the work behind patient care.",
-    text: "Organise patient records, appointments, billing and pharmacy operations. Practical hospital-management software for hospitals, clinics and their administration teams.",
-    href: "/solutions/hospital-management",
-    link: "Hospital Management",
-  },
-  {
-    label: "Education",
-    title: "Bring the school day together.",
-    text: "Manage admissions, attendance, timetables, gradebook and parent-teacher communication with Classveew, Quantum’s platform currently serving schools in Bahrain.",
-    href: "/solutions/school-management",
-    link: "Discover Classveew",
-  },
-];
 export default function Home() {
   return (
     <>
@@ -43,14 +20,14 @@ export default function Home() {
             Business software · Bahrain & GCC
           </span>
           <Heading
-            lines={["Business software.", "A simpler way", "forward."]}
+            lines={["Business software", "for Bahrain", "and the GCC."]}
           />
           <div className="hero-bottom">
             <p>
-              Cloud software for your accounts, people and operations. Quantum
-              brings practical business systems, custom software development and
-              AI solutions together through one Bahrain-based technology
-              partner.
+              Quantum Software Solutions provides cloud business systems, custom
+              software development, and AI solutions and support. Software for
+              your accounts, people and everyday operations, from a
+              Bahrain-based technology partner.
             </p>
             <Link href={demoHref()} className="button button-gold hero-cta">
               Request a demo
@@ -106,133 +83,59 @@ export default function Home() {
           </div>
         </div>
       </section>
+
       <div className="scope-strip container">
-        <p>Finance. People. Operations.</p>
-        <span>Cloud business software. Local understanding.</span>
+        <p>Accounts. People. Day-to-day operations.</p>
+        <span>Based in Bahrain · Serving the GCC</span>
       </div>
       <SolutionDirectory />
-      <section className="approach-section section-pad">
-        <div className="container">
-          <div className="section-intro" data-reveal>
-            <span className="eyebrow">The Quantum approach</span>
-            <h2>Useful software starts with the way your business works.</h2>
-            <div className="offset-copy">
-              <p>
-                You have a business to run. Your software should help you keep
-                track of the details, make sense of information and get everyday
-                work done.
-              </p>
-              <p>
-                We’re Quantum Software Solutions, a Bahrain-based company
-                focused on practical cloud systems. From finance and HR to
-                hospital and school administration, our portfolio helps
-                organisations put their operations in better order.
-              </p>
-              <TextLink href="/about">Get to know Quantum</TextLink>
-            </div>
-          </div>
-          <div className="principle-grid" data-stagger>
-            <article data-reveal>
-              <span className="small-index">01</span>
-              <h3>Business comes first.</h3>
-              <p>
-                Start with the work that needs to be done. Choose a system
-                around the records, processes and people that matter to your
-                organisation.
-              </p>
-            </article>
-            <article data-reveal>
-              <span className="small-index">02</span>
-              <h3>Information within reach.</h3>
-              <p>
-                Cloud-based software keeps business information centrally
-                managed and accessible, with less reliance on unnecessary local
-                infrastructure.
-              </p>
-            </article>
-            <article data-reveal>
-              <span className="small-index">03</span>
-              <h3>A local point of contact.</h3>
-              <p>
-                Speak with a Bahrain-based software company that understands the
-                local business context and serves the wider GCC.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-      <ProductExplorer />
+      <div className="home-product-section">
+        <ProductExplorer />
+      </div>
       <section className="industry-section section-pad">
         <div className="container">
           <div className="section-intro" data-reveal>
-            <span className="eyebrow">Software for your organisation</span>
-            <h2>Different sectors. Specific needs.</h2>
+            <span className="eyebrow">Healthcare & education</span>
+            <h2>Software for the work behind your institution.</h2>
             <p>
-              Find a system that supports the daily work of your business or
-              institution.
+              Hospitals, clinics and schools have their own administrative
+              needs. Explore the systems built for these areas.
             </p>
           </div>
-          <div className="industry-grid" data-stagger>
-            {sectors.map((s) => (
-              <article key={s.label} data-reveal>
-                <span className="eyebrow">{s.label}</span>
-                <h3>{s.title}</h3>
-                <p>{s.text}</p>
-                <TextLink href={s.href}>{s.link}</TextLink>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-      <section className="starting-section section-pad">
-        <div className="container starting-grid">
-          <div data-reveal>
-            <span className="eyebrow">Where to begin</span>
-            <h2>Let’s find the right starting point.</h2>
-            <p>
-              Looking for an existing business system, or something built around
-              your own requirements? Tell us what you want to improve.
-            </p>
-            <TextLink href="/contact">Talk to our team</TextLink>
-          </div>
-          <div className="starting-steps" data-reveal>
-            <details open name="starting-point">
-              <summary>
-                <span>01</span>Share your day-to-day challenges
-                <span className="accordion-symbol" aria-hidden="true" />
-              </summary>
-              <div>
-                <p>
-                  Tell us how your organisation works, where information gets
-                  difficult to manage and which tasks take up your team’s time.
-                </p>
-              </div>
-            </details>
-            <details name="starting-point">
-              <summary>
-                <span>02</span>Explore the relevant software
-                <span className="accordion-symbol" aria-hidden="true" />
-              </summary>
-              <div>
-                <p>
-                  Look at the systems that match your needs. Request a
-                  demonstration of a product, or discuss a custom software or AI
-                  requirement with Quantum.
-                </p>
-              </div>
-            </details>
-            <details name="starting-point">
-              <summary>
-                <span>03</span>Agree what comes next
-                <span className="accordion-symbol" aria-hidden="true" />
-              </summary>
-              <div>
-                <p>
-                  Confirm the functionality, setup, scope and support your
-                  organisation needs before deciding on the next step.
-                </p>
-              </div>
-            </details>
+          <div className="institution-grid" data-stagger>
+            <article data-reveal>
+              <span className="eyebrow">Hospital Management</span>
+              <h3>Organise the administration behind care.</h3>
+              <p>
+                Keep patient records, appointments, billing and pharmacy
+                operations in order. Quantum’s Hospital Management System is
+                intended for hospitals, clinics and their administration teams.
+              </p>
+              <ul>
+                <li>Patient records & appointments</li>
+                <li>Billing & pharmacy operations</li>
+              </ul>
+              <TextLink href="/solutions/hospital-management">
+                Explore Hospital Management
+              </TextLink>
+            </article>
+            <article data-reveal>
+              <span className="eyebrow">Classveew · School Management</span>
+              <h3>Bring school information together.</h3>
+              <p>
+                Manage admissions, attendance, timetables, gradebook and
+                parent-teacher communication. Classveew is Quantum’s
+                school-management platform, currently serving schools in
+                Bahrain.
+              </p>
+              <ul>
+                <li>School administration & daily records</li>
+                <li>Parent-teacher communication</li>
+              </ul>
+              <TextLink href="/solutions/school-management">
+                Meet Classveew
+              </TextLink>
+            </article>
           </div>
         </div>
       </section>
@@ -241,36 +144,31 @@ export default function Home() {
           <div className="regional-image" data-parallax="0.06">
             <Image
               src="/images/bahrain.webp"
-              alt="Illustrative view of the Manama waterfront in Bahrain"
+              alt="Illustrative view across the waterfront in Manama, Bahrain"
               fill
-              sizes="(max-width: 800px) 100vw, 40vw"
+              sizes="(max-width:800px) 100vw,40vw"
               className="parallax-image"
             />
             <span>Kingdom of Bahrain</span>
           </div>
           <div className="regional-copy" data-reveal>
-            <span className="eyebrow">
-              Local understanding. Regional outlook.
-            </span>
-            <h2>
-              Rooted in Bahrain.
-              <br />
-              Here for the GCC.
-            </h2>
+            <span className="eyebrow">About Quantum</span>
+            <h2>A Bahrain-based software partner.</h2>
             <p>
-              From our base in Al Hidd, we work with businesses and institutions
-              looking for useful software and a technology partner they can
-              speak to.
+              Quantum Software Solutions WLL serves businesses and institutions
+              in Bahrain and the wider GCC. We focus on useful software that
+              helps teams organise information and manage their everyday work.
             </p>
             <p>
-              Our focus is straightforward: simpler operations, clearer
-              information and systems that support the everyday work.
+              From cloud business systems to custom software and AI support, our
+              aim is straightforward: make business operations simpler, with a
+              local company you can speak to.
             </p>
-            <TextLink href="/about">More about Quantum</TextLink>
+            <TextLink href="/about">Get to know Quantum</TextLink>
           </div>
         </div>
       </section>
-      <FAQ items={homeFaqs} />
+      <FAQ id="questions" title="Before you get in touch." items={homeFaqs} />
       <ContactCTA />
     </>
   );

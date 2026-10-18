@@ -7,7 +7,7 @@ import { company } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Contact & Request a Demo",
   description:
-    "Contact Quantum Software Solutions in Bahrain. Request a software demo at sales@quantumbh.net or +973 3216 6628.",
+    "Contact Quantum Software Solutions in Bahrain. Request a product demonstration or discuss your software requirements at sales@quantumbh.net or +973 3216 6628.",
   alternates: { canonical: "/contact" },
   openGraph: { url: "/contact", title: "Contact Quantum" },
 };
@@ -27,11 +27,12 @@ export default async function Contact({
         </div>
         <div className="contact-page-grid">
           <div className="contact-intro">
-            <span className="eyebrow">Contact Quantum</span>
-            <Heading lines={["Let’s talk."]} />
+            <span className="eyebrow">Contact & demonstrations</span>
+            <Heading lines={["Talk to Quantum."]} />
             <p className="contact-lead">
-              A demo, a question or something you want to build. We’d like to
-              hear it.
+              Request a product demonstration, discuss a custom software project
+              or ask about a solution. Tell us what your organisation needs, and
+              give the conversation a useful starting point.
             </p>
             <div className="contact-direct">
               <a href={`mailto:${company.email}`}>
@@ -43,20 +44,28 @@ export default async function Contact({
                 <ArrowUpRight size={21} />
               </a>
             </div>
-            <address className="contact-address">
-              {company.address.map((l) => (
-                <span key={l}>{l}</span>
-              ))}
-            </address>
-            <a
-              className="text-link"
-              href="https://www.google.com/maps/search/?api=1&query=Building%202004%20Road%201527%20Block%20115%20Al%20Hidd%20Bahrain"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              View on Google Maps
-              <ArrowUpRight size={17} />
-            </a>
+            <div className="contact-office">
+              <span className="eyebrow">Our office · Bahrain</span>
+              <address className="contact-address">
+                {company.address.map((line) => (
+                  <span key={line}>{line}</span>
+                ))}
+              </address>
+              <a
+                className="text-link"
+                href={company.mapHref}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View on Google Maps
+                <ArrowUpRight size={17} />
+              </a>
+              <p className="contact-company">
+                {company.name}
+                <br />
+                CR {company.cr}
+              </p>
+            </div>
           </div>
           <EnquiryForm
             key={`${params.intent}:${params.solution}`}
@@ -65,14 +74,50 @@ export default async function Contact({
           />
         </div>
       </section>
+      <section className="contact-next-section">
+        <div className="container">
+          <div className="section-intro" data-reveal>
+            <span className="eyebrow">What happens next</span>
+            <h2>A simple way to start the conversation.</h2>
+          </div>
+          <div className="principle-grid" data-stagger>
+            <article data-reveal>
+              <span className="small-index">01</span>
+              <h3>Prepare your enquiry.</h3>
+              <p>
+                Select a solution or choose “Help me choose”. Include any
+                requirements you would like Quantum to consider.
+              </p>
+            </article>
+            <article data-reveal>
+              <span className="small-index">02</span>
+              <h3>Review and send.</h3>
+              <p>
+                The form prepares an email draft. Review it and send it from
+                your email app, or copy the enquiry into your preferred email
+                service.
+              </p>
+            </article>
+            <article data-reveal>
+              <span className="small-index">03</span>
+              <h3>Discuss your requirements.</h3>
+              <p>
+                Use your enquiry to explain the product you want to explore or
+                the work you need help with. You can also contact us directly by
+                phone or email.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
       <section id="privacy" className="enquiry-privacy">
         <div className="container privacy-grid">
           <h2>Privacy & enquiries</h2>
           <p>
             The form prepares an email draft on your device. Your details are
-            shared with Quantum when you send it through your email app. For
-            questions, contact{" "}
-            <a href="mailto:sales@quantumbh.net">sales@quantumbh.net</a>.
+            shared with Quantum when you send the email. For questions about an
+            enquiry or your information, contact{" "}
+            <a href={`mailto:${company.email}`}>{company.email}</a>.
           </p>
         </div>
       </section>

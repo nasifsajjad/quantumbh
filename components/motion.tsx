@@ -1,8 +1,9 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 export function Motion() {
   const pathname = usePathname();
+  const previousPath = useRef<string | null>(null);
   useEffect(() => {
     const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
     let teardown = () => {};
@@ -13,6 +14,15 @@ export function Motion() {
           .querySelectorAll(".will-reveal")
           .forEach((el) => el.classList.add("revealed"));
         return;
+      }
+      let routeAnimation: Animation | undefined;
+      if (previousPath.current && previousPath.current !== pathname) {
+        routeAnimation = document
+          .querySelector("main")
+          ?.animate([{ opacity: 0.55 }, { opacity: 1 }], {
+            duration: 340,
+            easing: "cubic-bezier(.2,.7,.2,1)",
+          });
       }
       const observer = new IntersectionObserver(
         (entries) => {
@@ -26,11 +36,15 @@ export function Motion() {
         { threshold: 0.12, rootMargin: "0px 0px -24px 0px" },
       );
       document.querySelectorAll<HTMLElement>("[data-reveal]").forEach((el) => {
+        if (el.getBoundingClientRect().top < innerHeight - 40) {
+          el.classList.add("revealed");
+          return;
+        }
         el.classList.add("will-reveal");
         if (el.parentElement?.hasAttribute("data-stagger"))
           el.style.setProperty(
             "--reveal-delay",
-            `${Array.from(el.parentElement.children).indexOf(el) * 110}ms`,
+            `${Math.min(Array.from(el.parentElement.children).indexOf(el) * 75, 225)}ms`,
           );
         observer.observe(el);
       });
@@ -69,6 +83,7 @@ export function Motion() {
       window.addEventListener("resize", tick);
       draw();
       teardown = () => {
+        routeAnimation?.cancel();
         observer.disconnect();
         cancelAnimationFrame(frame);
         window.removeEventListener("scroll", tick);
@@ -77,6 +92,7 @@ export function Motion() {
       };
     }
     setup();
+    previousPath.current = pathname;
     preference.addEventListener("change", setup);
     return () => {
       teardown();

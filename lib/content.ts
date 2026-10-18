@@ -10,430 +10,588 @@ export const company = {
     "Kingdom of Bahrain",
   ],
   cr: "197818-1",
+  mapHref:
+    "https://www.google.com/maps/search/?api=1&query=Building%202004%20Road%201527%20Block%20115%20Al%20Hidd%20Bahrain",
 };
+export type PreviewProduct = "erp" | "hr" | "hospital" | "school";
 export type Solution = {
   slug: string;
   name: string;
   short: string;
   category: "systems" | "services";
+  kind: "product" | "service";
+  preview?: PreviewProduct;
   eyebrow: string;
   title: string;
   accent: string;
   description: string;
   intro: string;
   detail: string;
+  audienceIntro: string;
   audience: string[];
   modules: { title: string; description: string; items: string[] }[];
   faqs: { question: string; answer: string }[];
+  enquiryTitle: string;
+  enquiryText: string;
+  enquiryPoints: string[];
+  cta: string;
+};
+export type ServiceContent = {
+  sectionLabel: string;
+  contextTitle: string;
+  situations: { title: string; text: string }[];
+  discussionTitle: string;
+  discussionIntro: string;
+  topics: { title: string; text: string }[];
 };
 export const solutions: Solution[] = [
   {
     slug: "erp-accounting",
     name: "ERP & Accounting",
-    short: "Accounting, inventory, transactions and reporting.",
+    short:
+      "Manage your accounts, invoices, inventory, customers and suppliers, with financial and operational reporting.",
     category: "systems",
+    kind: "product",
+    preview: "erp",
     eyebrow: "ERP & Accounting",
-    title: "Accounting,",
-    accent: "without the clutter.",
+    title: "ERP and accounting",
+    accent: "for everyday business.",
     description:
-      "Keep your accounts, stock and transactions in order. Cloud software for the daily work of running a business.",
-    intro: "From quotations to your financial reports.",
+      "Cloud software for the financial records, sales transactions and stock behind your business. Keep your accounts and operations organised through one system.",
+    intro: "For the business behind every transaction.",
     detail:
-      "Bring accounting, sales transactions, stock and reporting into one practical system. Keep track of what your business earns, spends, owes and holds in inventory, with a clearer view of the records behind each figure.",
+      "A sale affects more than an invoice. Your team also needs to know what is in stock, what customers owe and what is due to suppliers. Quantum’s ERP and accounting offering brings these areas together, with records and reports that help you follow the day-to-day business.",
+    audienceIntro:
+      "For retail, wholesale, manufacturing and service businesses that need accounting, inventory and financial management. Suitable for SMEs looking for a more organised way to manage operational information.",
     audience: [
-      "Retail & wholesale",
+      "Retail",
+      "Wholesale",
       "Manufacturing",
       "Service businesses",
       "SMEs",
     ],
     modules: [
       {
-        title: "Accounting & finance",
-        description: "The foundation for your financial records.",
+        title: "Accounting",
+        description:
+          "Maintain the records at the centre of your finances. Organise income and expenses, and keep amounts owed by customers and due to suppliers in view.",
         items: [
           "General ledger & chart of accounts",
-          "Income & expenses",
+          "Income & expense management",
           "Accounts receivable & payable",
-          "Cash & bank transactions",
         ],
       },
       {
-        title: "Sales & transactions",
-        description: "Follow a transaction from quotation to payment.",
-        items: [
-          "Quotations",
-          "Invoices",
-          "Payment tracking",
-          "Customer statements",
-        ],
+        title: "Sales transactions",
+        description:
+          "Keep the paperwork around a sale in order, from the quotation you prepare to the invoice and its payment record.",
+        items: ["Quotations", "Invoices", "Payment tracking"],
       },
       {
         title: "Inventory",
-        description: "Keep stock levels and movements in view.",
+        description:
+          "Know what your business holds and how stock changes. Follow movements, monitor valuation and identify items that need attention.",
         items: [
-          "Stock management & movements",
+          "Stock records & movements",
           "Low-stock alerts",
           "Inventory valuation",
         ],
       },
       {
         title: "Customers & suppliers",
-        description: "Organise the records behind your business relationships.",
+        description:
+          "Keep business relationships connected to the right records. Refer to statements and credit limits when managing customer and supplier accounts.",
         items: [
           "Customer & supplier records",
-          "Account statements",
+          "Customer & supplier statements",
           "Credit limits",
         ],
       },
       {
+        title: "Cash & banking",
+        description:
+          "Organise cash and bank transactions and monitor the movement of money through your business.",
+        items: [
+          "Cash transactions",
+          "Bank transactions",
+          "Cash-flow monitoring",
+        ],
+      },
+      {
         title: "Reporting",
-        description: "Put your financial and operational records to work.",
+        description:
+          "Turn financial and operational records into information you can review. Use dashboards and reports to understand business performance.",
         items: [
           "Financial dashboards",
-          "Cash-flow monitoring",
           "Business-performance reports",
-          "Operational & financial reporting",
+          "Financial & operational reporting",
         ],
       },
     ],
     faqs: [
       {
-        question: "Which businesses is it for?",
+        question: "Does the offering cover inventory as well as accounting?",
         answer:
-          "Retailers, wholesalers, manufacturers, service companies and SMEs that need accounting, inventory and financial management.",
+          "Yes. Inventory management includes stock movements, low-stock alerts and inventory valuation, alongside accounting, sales transactions, and customer and supplier records.",
       },
       {
-        question: "Can I request a demo?",
+        question: "Is the software cloud-based?",
         answer:
-          "Yes. Tell us which areas you want to explore, and we can discuss the relevant product with you.",
+          "Quantum’s products are positioned around cloud access and centrally managed business information. Our team can explain the available setup and technical details for the product you are considering.",
+      },
+      {
+        question: "Can we focus a demonstration on particular areas?",
+        answer:
+          "Yes. Tell us whether your priority is accounting, invoices, inventory, customer and supplier accounts, or reporting. That gives the discussion a clear starting point.",
       },
     ],
+    enquiryTitle: "Explore ERP & Accounting with Quantum.",
+    enquiryText:
+      "Tell us how your business manages accounts, stock and transactions today. Request a demonstration focused on the areas your team needs to understand.",
+    enquiryPoints: [
+      "The type of business you run",
+      "The accounts and stock records you manage",
+      "The functions you want to explore",
+    ],
+    cta: "Request an ERP demo",
   },
   {
     slug: "hr-management",
     name: "HR Management",
-    short: "Employee records, payroll, attendance and leave.",
+    short:
+      "Keep employee records, payroll, attendance and leave information together in a cloud HR system.",
     category: "systems",
+    kind: "product",
+    preview: "hr",
     eyebrow: "HR Management",
-    title: "HR, with",
-    accent: "less admin.",
+    title: "HR software for",
+    accent: "your working day.",
     description:
-      "Keep employee information, payroll, attendance and leave organised in one HR system.",
-    intro: "The essentials of people management.",
+      "Employee records, payroll, attendance and leave management. A practical system for the regular administration behind your people.",
+    intro: "For the team looking after your employees.",
     detail:
-      "Employee information, pay, attendance and leave are closely connected parts of the working day. Quantum’s HR system helps your team keep these essential records organised, so the administration behind people management is easier to follow.",
-    audience: ["Businesses with employees", "HR & administration teams"],
+      "HR involves information that needs attention throughout the month: employee details, attendance, leave and pay. Quantum’s HR system gives these essential areas a more organised home, so your administration team has a consistent set of records to work with.",
+    audienceIntro:
+      "For businesses and organisations with employees, particularly HR and administration teams working in Bahrain and the GCC.",
+    audience: ["Businesses with employees", "HR teams", "Administration teams"],
     modules: [
       {
         title: "Employee records",
         description:
-          "Give employee information a structured home, so your HR team can maintain the records it needs for day-to-day administration.",
+          "Keep employee information organised in the HR system. Give the people responsible for administration a structured record they can maintain and refer to.",
         items: [],
       },
       {
         title: "Payroll",
         description:
-          "Bring the regular work of employee pay into your HR system and keep payroll information organised alongside your people records.",
+          "Manage the regular work around employee pay. Keep payroll information organised as part of your HR administration.",
         items: [],
       },
       {
         title: "Attendance",
         description:
-          "Keep day-to-day attendance information in order and give your administration team a consistent record to work from.",
+          "Maintain day-to-day attendance records. Keep the information your team needs to review employee attendance in one place.",
         items: [],
       },
       {
         title: "Leave management",
         description:
-          "Organise employee leave records, with a clearer view of the information your team needs to manage time away from work.",
+          "Organise employee leave information and maintain a clearer record of time away from work.",
         items: [],
       },
     ],
     faqs: [
       {
-        question: "What does the HR system cover?",
+        question: "Which HR functions does the system cover?",
         answer:
-          "The system covers employee records, payroll, attendance and leave management. Talk to Quantum about the day-to-day requirements of your HR and administration teams.",
+          "The confirmed functions are employee records, payroll, attendance and leave management. Contact Quantum to discuss the requirements of your organisation.",
       },
       {
-        question: "Who is it for?",
+        question: "Can we discuss our Bahrain or GCC operations?",
         answer:
-          "Businesses and organisations with employees, particularly those looking for practical HR software for their Bahrain or GCC operations.",
+          "Yes. Quantum is based in Bahrain and serves the wider GCC. Explain how your organisation manages HR so our team can discuss the relevant product scope and setup.",
+      },
+      {
+        question: "Can we request a demonstration of payroll or attendance?",
+        answer:
+          "You can request a demonstration and identify the areas you want to explore, including payroll, attendance, leave or employee records.",
       },
     ],
+    enquiryTitle: "Take a closer look at HR Management.",
+    enquiryText:
+      "Bring the HR tasks your team handles every month. We can discuss the system around your employee records, payroll, attendance and leave requirements.",
+    enquiryPoints: [
+      "Your current HR administration",
+      "The functions your team needs to see",
+      "Your setup and support questions",
+    ],
+    cta: "Request an HR demo",
   },
   {
     slug: "hospital-management",
     name: "Hospital Management",
-    short: "Patient records, appointments, billing and pharmacy.",
+    short:
+      "Organise patient records, appointments, billing and pharmacy operations for hospitals and clinics.",
     category: "systems",
+    kind: "product",
+    preview: "hospital",
     eyebrow: "Hospital Management",
-    title: "Focus on care.",
-    accent: "Organise the day.",
+    title: "Software for hospitals",
+    accent: "and clinics.",
     description:
-      "Practical software for the patient records, appointments, billing and pharmacy operations behind your hospital or clinic.",
-    intro: "The work behind the care.",
+      "Manage the patient records, appointments, billing and pharmacy operations behind day-to-day healthcare services.",
+    intro: "Support the administration behind patient care.",
     detail:
-      "A hospital or clinic relies on well-organised information throughout the day. Quantum brings patient records, appointments, billing and pharmacy operations into a management system focused on the administrative work behind care.",
-    audience: ["Hospitals", "Clinics"],
+      "A hospital or clinic needs well-organised information throughout the day. Quantum’s Hospital Management System focuses on the operational work around patient records, appointments, billing and pharmacy, helping administration teams keep these areas in order.",
+    audienceIntro:
+      "For hospitals, clinics and the teams coordinating their daily administration. Discuss your organisation’s requirements with Quantum to establish the relevant scope.",
+    audience: ["Hospitals", "Clinics", "Healthcare administration"],
     modules: [
       {
         title: "Patient records",
         description:
-          "Keep patient information organised so your healthcare administration team can work from structured records.",
+          "Organise patient information in structured records, so the team responsible for administration can maintain and refer to the details it works with.",
         items: [],
       },
       {
         title: "Appointments",
         description:
-          "Manage appointment information and keep the day’s schedule in view for the teams coordinating patient visits.",
+          "Manage appointment information and keep the day’s schedule in view for the people coordinating patient visits.",
         items: [],
       },
       {
         title: "Billing",
         description:
-          "Organise the billing information behind your healthcare services as part of day-to-day hospital or clinic administration.",
+          "Keep the billing information behind your healthcare services organised as part of everyday administration.",
         items: [],
       },
       {
         title: "Pharmacy operations",
         description:
-          "Support the operational work of your pharmacy within the broader hospital-management system.",
+          "Support the operational work of your pharmacy within the hospital-management offering. Discuss your pharmacy requirements with Quantum as part of the product conversation.",
         items: [],
       },
     ],
     faqs: [
       {
-        question: "Is the system for clinics as well as hospitals?",
+        question: "Is the system intended for clinics as well as hospitals?",
         answer:
-          "Yes. Quantum’s hospital-management offering is intended for hospitals and clinics, covering patient records, appointments, billing and pharmacy operations.",
+          "Yes. The offering is intended for both hospitals and clinics, covering patient records, appointment management, billing and pharmacy operations.",
       },
       {
-        question: "Can we discuss our organisation’s requirements?",
+        question: "Can we discuss our pharmacy requirements?",
         answer:
-          "Yes. Share your current processes and the areas you would like to see in a demonstration. Quantum can confirm the relevant functionality and scope with you.",
+          "Yes. Pharmacy operations are part of the offering. Share the work your team needs to manage so Quantum can confirm the relevant functionality with you.",
+      },
+      {
+        question: "What should we explain before a demonstration?",
+        answer:
+          "Tell us about your hospital or clinic, the administrative tasks you want to review and the areas of the system you would like to explore.",
       },
     ],
+    enquiryTitle: "Discuss your hospital or clinic.",
+    enquiryText:
+      "Request a demonstration around the operational information your team manages. Tell us which areas matter most, from patient records and appointments to billing and pharmacy.",
+    enquiryPoints: [
+      "Your organisation and current administration",
+      "The areas you would like to see",
+      "Your product and setup questions",
+    ],
+    cta: "Request a hospital system demo",
   },
   {
     slug: "school-management",
     name: "School Management",
-    short: "Meet Classveew. Software for school life.",
+    short:
+      "Classveew brings admissions, attendance, timetables, gradebook and parent-teacher communication together.",
     category: "systems",
+    kind: "product",
+    preview: "school",
     eyebrow: "School management by Quantum",
     title: "Classveew.",
-    accent: "A better-organised school day.",
+    accent: "Software for the school day.",
     description:
-      "Admissions, attendance, timetables, gradebook and parent-teacher communication. School management, together.",
-    intro: "What Classveew covers.",
+      "Admissions, attendance, timetables, gradebook and parent-teacher communication. School-management software by Quantum, currently serving schools in Bahrain.",
+    intro: "For the work that keeps a school organised.",
     detail:
-      "From the first admission record to everyday attendance and timetables, Classveew gives school information a structured home. Its gradebook and parent-teacher communication tools help schools organise the work around teaching and learning.",
+      "School administration carries on throughout the academic year. Classveew helps schools keep admissions, attendance, timetables and grade information organised, alongside communication between parents and teachers.",
+    audienceIntro:
+      "For schools and educational institutions looking for a structured way to manage school information and the daily routines around it.",
     audience: ["Schools", "Educational institutions"],
     modules: [
       {
         title: "Admissions",
         description:
-          "Keep admissions information organised, with a structured record for the administration at the start of a student’s time at school.",
+          "Keep admissions information organised from the start of a student’s time at school. Maintain the records needed for this part of school administration.",
         items: [],
       },
       {
         title: "Attendance",
         description:
-          "Maintain day-to-day student attendance information in one place, so the school has a consistent record to work from.",
+          "Record student attendance and keep day-to-day information available for reference by the school.",
         items: [],
       },
       {
         title: "Timetables",
         description:
-          "Organise the schedules that structure the school day, keeping timetable information together for everyday reference.",
+          "Organise the schedules that structure the school day, with timetable information kept together for everyday reference.",
         items: [],
       },
       {
         title: "Gradebook",
         description:
-          "Give student grade information a structured home, helping the school maintain and refer to its academic records.",
+          "Maintain grade information in a structured record, helping the school organise and refer to its academic records.",
         items: [],
       },
       {
         title: "Parent-teacher communication",
         description:
-          "Support communication between parents and teachers alongside the school’s administrative information.",
+          "Support communication between parents and teachers as part of the school’s day-to-day work.",
         items: [],
       },
     ],
     faqs: [
       {
-        question: "What is Classveew?",
+        question: "Is Classveew a Quantum product?",
         answer:
-          "Classveew is Quantum’s school-management platform, covering admissions, gradebook, attendance, timetables and parent-teacher communication.",
+          "Yes. Classveew is Quantum’s school-management platform, covering admissions, gradebook, attendance, timetables and parent-teacher communication.",
       },
       {
-        question: "Is it used in Bahrain?",
+        question: "Is Classveew currently used in Bahrain?",
         answer:
-          "Yes. Classveew is currently serving schools in Bahrain. Contact Quantum to discuss the platform or request a demonstration.",
+          "Yes. Classveew is currently serving schools in Bahrain. Contact Quantum to discuss the platform and request a demonstration.",
+      },
+      {
+        question: "Can our school request a demonstration?",
+        answer:
+          "Yes. Tell us about your school and which areas you want to explore, such as admissions, attendance, timetables, gradebook or communication.",
       },
     ],
+    enquiryTitle: "See Classveew with your school in mind.",
+    enquiryText:
+      "Tell us how your school manages its information today. Request a demonstration focused on the functions your administration and teaching teams want to explore.",
+    enquiryPoints: [
+      "Your school and administrative needs",
+      "The functions you want to explore",
+      "Questions from your school team",
+    ],
+    cta: "Request a Classveew demo",
   },
   {
     slug: "software-development",
     name: "Software Development",
-    short: "Custom business software, shaped around your needs.",
+    short:
+      "Discuss business software built around your organisation’s own processes and requirements.",
     category: "services",
+    kind: "service",
     eyebrow: "Software Development",
-    title: "Your business.",
-    accent: "Your software.",
+    title: "Software built around",
+    accent: "your business.",
     description:
-      "Custom business systems built around your organisation’s processes and priorities.",
-    intro: "When the requirements are yours, the software should fit.",
+      "Custom business software and digital systems shaped around your organisation’s operational requirements.",
+    intro: "When your requirements need a closer look.",
     detail:
-      "Tell us what your business needs to do. We’ll discuss the scope of a suitable software solution.",
-    audience: ["Businesses", "Organisations"],
-    modules: [
-      {
-        title: "Business systems",
-        description:
-          "Software that supports your organisation’s operational needs.",
-        items: [
-          "Business processes",
-          "Operational information",
-          "The people using the system",
-        ],
-      },
-      {
-        title: "Custom requirements",
-        description:
-          "A practical discussion about what your software needs to achieve.",
-        items: [
-          "Your current way of working",
-          "The problem to address",
-          "The scope of a suitable solution",
-        ],
-      },
+      "Every organisation has its own way of working. If you need software around a particular business process, Quantum can discuss a custom solution with you. The starting point is the work itself: who does it, what information they use and what the system needs to achieve.",
+    audienceIntro:
+      "For businesses and organisations with requirements that need individual consideration.",
+    audience: ["Businesses", "Organisations with specific requirements"],
+    modules: [],
+    faqs: [],
+    enquiryTitle: "Tell us what you need to build.",
+    enquiryText:
+      "You do not need a technical specification to start the conversation. An outline of your current process, the people involved and the result you want is a useful beginning.",
+    enquiryPoints: [
+      "The process you want to support",
+      "Who will use the software",
+      "What a useful result would look like",
     ],
-    faqs: [
-      {
-        question: "What kind of software can we discuss?",
-        answer:
-          "Business software and digital systems built around your organisation’s operational needs. Share the problem you want to address so Quantum can discuss a suitable scope.",
-      },
-      {
-        question: "What should we bring to an initial conversation?",
-        answer:
-          "An outline of your current process, the people who will use the software and what you want it to achieve. Existing examples of how your team works can also help explain the requirement.",
-      },
-    ],
+    cta: "Discuss your project",
   },
   {
     slug: "ai-solutions-support",
     name: "AI Solutions & Support",
-    short: "Practical AI solutions and business-focused support.",
+    short:
+      "Discuss useful business applications of AI and the AI-related assistance your organisation needs.",
     category: "services",
+    kind: "service",
     eyebrow: "AI Solutions & Support",
-    title: "A practical",
-    accent: "approach to AI.",
+    title: "AI solutions",
+    accent: "and business support.",
     description:
-      "Explore where AI could be useful to your business, and discuss the support your organisation needs.",
-    intro: "Start with a business need.",
+      "Explore AI around a business need. Discuss the task you want to address and the AI-related support your organisation is looking for.",
+    intro: "Begin with a useful business question.",
     detail:
-      "Share the business problem you want to address. We’ll discuss the relevant capabilities and confirm the scope with you.",
-    audience: ["Businesses exploring AI", "Organisations seeking AI support"],
+      "What is your team trying to do, and where would assistance make a difference? Quantum offers AI solutions and AI support. A conversation about your current work helps establish which capabilities are relevant and what scope needs to be considered.",
+    audienceIntro:
+      "For businesses exploring AI and organisations seeking AI-related assistance.",
+    audience: ["Businesses exploring AI", "Organisations seeking support"],
     modules: [
       {
         title: "AI solutions",
         description:
-          "Discuss a useful business application and the requirements behind it.",
+          "Discuss a business application you would like to explore. Explain the task, the information involved and the result you want to achieve, so Quantum can consider the requirement with you.",
         items: [],
       },
       {
         title: "AI support",
         description:
-          "Talk through the AI-related assistance your organisation is looking for.",
+          "Describe the AI-related assistance your organisation needs. Our team can discuss the relevant capabilities and confirm the scope of support with you.",
         items: [],
       },
     ],
-    faqs: [
-      {
-        question: "How do we start an AI discussion?",
-        answer:
-          "Start with the business problem rather than a particular technology. Tell Quantum what your team is trying to do and where you are looking for AI-related assistance.",
-      },
-      {
-        question: "Can we ask about AI support?",
-        answer:
-          "Yes. AI support is part of Quantum’s offering. Describe the assistance you need so the relevant capabilities and scope can be confirmed with you.",
-      },
+    faqs: [],
+    enquiryTitle: "Discuss an AI requirement.",
+    enquiryText:
+      "Tell us about the work you want to improve or the assistance you need. We’ll discuss the relevant capabilities and establish a suitable starting point.",
+    enquiryPoints: [
+      "Your business task or question",
+      "Your current way of working",
+      "The assistance you are looking for",
     ],
+    cta: "Discuss an AI requirement",
   },
   {
     slug: "sales-automation",
     name: "Sales Automation",
-    short: "Explore a more efficient way to manage sales work.",
+    short:
+      "Explore sales automation around the daily work and administrative needs of your sales team.",
     category: "systems",
+    kind: "service",
     eyebrow: "Sales Automation",
-    title: "A smoother",
-    accent: "sales process.",
+    title: "Sales automation",
+    accent: "for your business.",
     description:
-      "Explore sales automation for your business. Start with the tasks your team wants to make simpler.",
-    intro: "Build the conversation around your sales process.",
+      "Discuss a more efficient way to handle sales work. Start with the tasks your team repeats and the parts of the process you want to improve.",
+    intro: "Start with the work around a sale.",
     detail:
-      "Tell us how your team works today and what you want to improve. We’ll confirm the available functionality with you.",
-    audience: ["Businesses reviewing sales processes", "Sales teams"],
-    modules: [
+      "Sales teams need to spend time on customers while keeping the administration around their work in order. Quantum’s sales automation offering is a starting point for discussing those operational needs. Explain your current process so the available functionality and fit can be confirmed.",
+    audienceIntro:
+      "For businesses reviewing their sales processes and teams looking at how software could support their daily work.",
+    audience: ["Businesses reviewing sales work", "Sales teams"],
+    modules: [],
+    faqs: [],
+    enquiryTitle: "Discuss your sales process.",
+    enquiryText:
+      "Walk us through how your team works today and where time is being spent. Quantum can discuss your requirements and confirm the relevant functionality with you.",
+    enquiryPoints: [
+      "The daily tasks around a sale",
+      "The information your team needs",
+      "The work you want to make simpler",
+    ],
+    cta: "Discuss your sales process",
+  },
+];
+export const serviceContent: Record<string, ServiceContent> = {
+  "software-development": {
+    sectionLabel: "Custom business software",
+    contextTitle: "Software around your operational needs.",
+    situations: [
+      {
+        title: "Processes specific to your organisation",
+        text: "Your software requirements may involve particular responsibilities, records or steps in a business process. Describe how the work is done so the system can be discussed in that context.",
+      },
+      {
+        title: "Business information that needs more structure",
+        text: "If your team needs a better way to organise operational information, explain the records it uses, who maintains them and where the current approach becomes difficult.",
+      },
+    ],
+    discussionTitle: "A useful brief starts with four things.",
+    discussionIntro:
+      "These details help make an initial conversation specific. Share what you know; the scope can be discussed with Quantum.",
+    topics: [
       {
         title: "Your current process",
-        description:
-          "Walk us through the daily work around a sale and the steps that take time.",
-        items: [],
+        text: "Describe the work from beginning to end. Explain where it takes place, who is involved and which steps are difficult to manage.",
       },
       {
-        title: "Your requirements",
-        description:
-          "Discuss where automation could help, and confirm the right scope with Quantum.",
-        items: [],
+        title: "The people using the system",
+        text: "Tell us which teams will work with the software and what each needs to do. The everyday users are an important part of understanding the requirement.",
+      },
+      {
+        title: "The information you manage",
+        text: "Explain which business records and documents the work depends on, how they are maintained and what information the team needs to find.",
+      },
+      {
+        title: "The result you want",
+        text: "Identify what you want to improve. A clear business goal makes it easier to discuss which requirements matter and what should be included.",
       },
     ],
-    faqs: [
+  },
+  "ai-solutions-support": {
+    sectionLabel: "Two ways to work with Quantum",
+    contextTitle: "AI solutions and AI support.",
+    situations: [],
+    discussionTitle: "Give the conversation a clear starting point.",
+    discussionIntro:
+      "A business requirement is more useful than a broad request to “add AI”. Describe the work, the intended result and the assistance you need.",
+    topics: [
       {
-        question: "What does sales automation include?",
-        answer:
-          "Sales automation is part of Quantum’s portfolio. Discuss your sales process with our team to confirm the available functionality and whether it fits your business.",
+        title: "The task you want to address",
+        text: "Explain what your team is trying to do and why the current approach needs attention. Keep the focus on a useful business outcome.",
       },
       {
-        question: "Can we discuss our existing sales process?",
-        answer:
-          "Yes. Explain how your sales team works today, which tasks take time and what you would like to improve. This gives the conversation a practical starting point.",
+        title: "Your current way of working",
+        text: "Describe the process and information involved. This helps Quantum understand the requirement before discussing relevant AI capabilities.",
+      },
+      {
+        title: "The assistance you need",
+        text: "Tell us whether you want to explore an AI solution or discuss AI-related support. The exact scope can then be considered with your organisation.",
       },
     ],
+  },
+  "sales-automation": {
+    sectionLabel: "Your sales operations",
+    contextTitle: "Look at where the time goes.",
+    situations: [
+      {
+        title: "Work that repeats",
+        text: "Identify the administrative tasks your team carries out regularly. Explain which take time and what you want to improve.",
+      },
+      {
+        title: "Information people need",
+        text: "Consider the information your team needs before, during and after a sale, and where it becomes difficult to keep track of.",
+      },
+    ],
+    discussionTitle: "Explore the fit for your team.",
+    discussionIntro:
+      "The right scope depends on how your sales work is organised. Discuss the available functionality with Quantum around these practical questions.",
+    topics: [
+      {
+        title: "How does a sale move through your business?",
+        text: "Describe the people, steps and administrative work involved in your current process.",
+      },
+      {
+        title: "What would you like to improve?",
+        text: "Explain the tasks that need attention and the result you want from a different way of working.",
+      },
+      {
+        title: "What functionality do you need to confirm?",
+        text: "Bring your requirements to Quantum so our team can discuss the offering and confirm which functions are relevant to your business.",
+      },
+    ],
+  },
+};
+export const homeFaqs = [
+  {
+    question: "Which solution should I explore?",
+    answer:
+      "Start with the work you want to organise: accounts and stock, employee administration, healthcare operations, school information or sales. For a particular business requirement, explore Software Development or AI Solutions & Support. If you are unsure, contact Quantum and explain what you need.",
+  },
+  {
+    question: "Are Quantum’s products cloud-based?",
+    answer:
+      "Quantum’s products are positioned around cloud access and centrally managed business information. Contact our team to discuss the available setup and technical details for the product you are considering.",
+  },
+  {
+    question: "How do I request a demonstration?",
+    answer:
+      "Choose Request a demo and select the solution you want to explore. Prepare an enquiry through the contact page and send it from your email app, or contact sales@quantumbh.net or +973 3216 6628 directly.",
   },
 ];
 export const solutionHref = (slug: string) => `/solutions/${slug}`;
 export const demoHref = (solution?: string) =>
   `/contact?intent=demo${solution ? `&solution=${encodeURIComponent(solution)}` : ""}`;
-
-export const homeFaqs = [
-  {
-    question: "What does Quantum do?",
-    answer:
-      "Quantum Software Solutions WLL provides cloud business software, custom software development, and AI solutions and support. Our portfolio includes ERP and accounting, HR, hospital management, Classveew school management, and sales automation.",
-  },
-  {
-    question: "Which solution is right for my organisation?",
-    answer:
-      "Start with the work you want to improve: finance and inventory, people management, healthcare operations, school administration or sales. If you have a more specific requirement, talk to us about custom software development or AI solutions.",
-  },
-  {
-    question: "Are Quantum’s products cloud-based?",
-    answer:
-      "Our products are built around cloud access and centrally managed business information. Speak with Quantum to confirm the available setup and technical details for the product you are considering.",
-  },
-  {
-    question: "Where is Quantum based?",
-    answer:
-      "We’re based in Al Hidd, Kingdom of Bahrain, and serve businesses and organisations across Bahrain and the wider GCC.",
-  },
-  {
-    question: "How can I arrange a demonstration?",
-    answer:
-      "Choose Request a demo and tell us which solution interests you. You can prepare an enquiry through our contact form, email sales@quantumbh.net or call +973 3216 6628.",
-  },
-];
+export const enquiryHref = (solution: Solution) =>
+  solution.kind === "product"
+    ? demoHref(solution.name)
+    : `/contact?solution=${encodeURIComponent(solution.name)}`;

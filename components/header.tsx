@@ -18,6 +18,28 @@ export function Header() {
     setMobile(false);
   }, [path]);
   useEffect(() => {
+    const breakpoint = window.matchMedia("(min-width: 801px)");
+    const resetMenus = () => {
+      setOpen(false);
+      setMobile(false);
+    };
+    breakpoint.addEventListener("change", resetMenus);
+    return () => breakpoint.removeEventListener("change", resetMenus);
+  }, []);
+  useEffect(() => {
+    const header = headerRef.current;
+    if (!header) return;
+    const measure = () =>
+      document.documentElement.style.setProperty(
+        "--header-height",
+        `${header.getBoundingClientRect().height}px`,
+      );
+    const observer = new ResizeObserver(measure);
+    observer.observe(header);
+    measure();
+    return () => observer.disconnect();
+  }, []);
+  useEffect(() => {
     const escape = (e: KeyboardEvent) => {
       if (e.key === "Escape" && (open || mobile)) {
         setOpen(false);

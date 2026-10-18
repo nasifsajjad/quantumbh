@@ -31,14 +31,16 @@ export function SectionLabel({
 }
 export function FAQ({
   items,
+  id,
   title = "A few things you might want to know.",
 }: {
   items: { question: string; answer: string }[];
   title?: string;
+  id?: string;
 }) {
   if (!items.length) return null;
   return (
-    <section className="faq-section section-pad">
+    <section id={id} className="faq-section section-pad">
       <div className="container">
         <div className="section-intro" data-reveal>
           <span className="eyebrow">Frequently asked questions</span>
@@ -61,24 +63,33 @@ export function FAQ({
     </section>
   );
 }
-export function ContactCTA({ solution }: { solution?: string }) {
+export function ContactCTA({
+  solution,
+  title = "Find the right software for your organisation.",
+  description = "Tell us what you need to manage. Explore a product demonstration or discuss your requirements with Quantum.",
+  label = "Request a demo",
+  href,
+}: {
+  solution?: string;
+  title?: string;
+  description?: string;
+  label?: string;
+  href?: string;
+}) {
   return (
     <section className="contact-cta">
       <div className="container cta-grid">
         <div data-reveal>
-          <span className="eyebrow">Your next step</span>
-          <h2>
-            Better software.
-            <br />A clearer working day.
-          </h2>
+          <span className="eyebrow">Get in touch</span>
+          <h2>{title}</h2>
         </div>
         <div className="cta-aside" data-reveal>
-          <p>
-            Tell us what your organisation needs. We’ll help you explore the
-            right solution.
-          </p>
-          <Link href={demoHref(solution)} className="button button-dark">
-            Request a demo
+          <p>{description}</p>
+          <Link
+            href={href || demoHref(solution)}
+            className="button button-dark"
+          >
+            {label}
             <ArrowUpRight size={23} />
           </Link>
           <a href="mailto:sales@quantumbh.net" className="cta-email">

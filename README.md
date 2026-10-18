@@ -52,19 +52,20 @@ Solution-specific demo links preselect the relevant solution on the contact page
 
 - `app/` — App Router pages, metadata, global styles, sitemap, robots.txt, favicon
 - `components/` — Reusable navigation, page sections, product explorer, enquiry form
-- `lib/content.ts` — Company details and solution content
+- `lib/content.ts` — Company details, product capabilities, service content and enquiry copy
+- `lib/product-previews.ts` — Labelled sample data for the four interactive software previews
 - `public/images/` — Website imagery and logos
 - `public/fonts/` — Self-hosted DM Sans and its SIL Open Font License
 
 ## Enquiry form
 
-The form validates the visitor's details and prepares an email draft addressed to `sales@quantumbh.net`. The visitor reviews and sends the enquiry through their email app, or copies the prepared text.
+Demo requests can omit a message; general enquiries require one. The form validates the visitor's details and prepares an email draft addressed to `sales@quantumbh.net`. The visitor reviews and sends the enquiry through their email app, or copies the prepared text.
 
 Automatic server-side email delivery is not connected. To enable it, connect an email service through a server-side endpoint and update the form and privacy notice. Keep email-service credentials server-side.
 
 ## Product visuals
 
-The software imagery and ERP explorer are labelled conceptual visuals with illustrative data. Replace them with actual product screenshots when available. Editorial photographs are illustrative scenes, not photographs of Quantum staff or customers.
+The software imagery and interactive ERP, HR, hospital and Classveew previews are labelled conceptual visuals with illustrative data. Replace them with actual product screenshots when available. Editorial photographs are illustrative scenes, not photographs of Quantum staff or customers.
 
 ## Checks
 

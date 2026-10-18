@@ -1,112 +1,53 @@
-import Image from "next/image";
-import Link from "next/link";
-import { ArrowDown, ArrowUpRight, Check } from "lucide-react";
-import { ContactCTA, FAQ, TextLink } from "./ui";
-import { Heading } from "./heading";
+import { FAQ } from "./ui";
 import { ProductExplorer } from "./product-explorer";
-import {
-  demoHref,
-  solutionHref,
-  solutions,
-  type Solution,
-} from "@/lib/content";
+import { ServicePage } from "./service-page";
+import { SolutionHero, SolutionEnquiry } from "./solution-shell";
+import type { Solution } from "@/lib/content";
+import { Check } from "lucide-react";
 export function SolutionPage({ solution: s }: { solution: Solution }) {
-  const school = s.slug === "school-management";
-  const erp = s.slug === "erp-accounting";
-  const service = s.category === "services" || s.slug === "sales-automation";
-  const href = service
-    ? `/contact?solution=${encodeURIComponent(s.name)}`
-    : demoHref(s.name);
-  const related = solutions
-    .filter((item) => item.slug !== s.slug && item.category === s.category)
-    .slice(0, 3);
+  if (s.kind === "service") return <ServicePage solution={s} />;
+  const sections = [
+    { id: "overview", label: "Who it is for" },
+    { id: "capabilities", label: "Capabilities" },
+    { id: "product-preview", label: "Software preview" },
+    { id: "questions", label: "Questions" },
+    { id: "solution-enquiry", label: "Request a demo" },
+  ];
   return (
     <>
-      <section className="solution-hero">
-        <div className="container">
-          <div className="breadcrumbs">
-            <Link href="/">Home</Link>
-            <span>/</span>
-            <Link href="/#solutions">Solutions</Link>
-            <span>/</span>
-            <span>{s.name}</span>
-          </div>
-          <div className="solution-hero-grid">
-            <div className="solution-hero-copy">
-              <span className="eyebrow">{s.eyebrow}</span>
-              <Heading lines={school ? [s.title] : [s.title, s.accent]} />
-              {school && <p className="school-tagline">{s.accent}</p>}
-              <p className="solution-lead">{s.description}</p>
-              <div className="solution-primary-action">
-                <Link href={href} className="button button-gold">
-                  {service ? "Talk to our team" : "Request a demo"}
-                  <ArrowUpRight size={23} />
-                </Link>
-              </div>
-              {school && (
-                <span className="school-use-note">
-                  Currently serving schools in Bahrain.
-                </span>
-              )}
-            </div>
-            <aside className="solution-at-a-glance">
-              <span className="eyebrow">
-                {service ? "A useful starting point" : "At a glance"}
-              </span>
-              <h2>
-                {service
-                  ? "Start with your business."
-                  : "The essentials, together."}
-              </h2>
-
-              <ul>
-                {s.modules.map((m, i) => (
-                  <li key={m.title}>
-                    <a href={`#module-${i}`}>
-                      <span>{m.title}</span>
-                      <ArrowDown size={16} />
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </aside>
-          </div>
-          <nav className="page-nav" aria-label="On this page">
-            <a href="#overview">Overview</a>
-            <a href="#capabilities">
-              {service ? "How we can help" : "Capabilities"}
-            </a>
-            {erp && <a href="#product-preview">Product preview</a>}
-            <a href="#solution-enquiry">
-              {service ? "Discuss your requirements" : "Explore with Quantum"}
-            </a>
-          </nav>
-        </div>
-      </section>
+      <SolutionHero solution={s} sections={sections} />
       <section className="capabilities-section section-pad" id="overview">
         <div className="container">
           <div className="capabilities-intro" data-reveal>
             <div>
               <span className="eyebrow">
-                {service
-                  ? "Your requirements, understood"
-                  : "Designed around everyday work"}
+                {s.slug === "school-management"
+                  ? "School administration"
+                  : "Who it is for"}
               </span>
               <h2>{s.intro}</h2>
             </div>
             <div>
               <p>{s.detail}</p>
-              <div className="audience">
-                <span>For</span>
-                <ul className="audience-list">
-                  {s.audience.map((a) => (
-                    <li key={a}>{a}</li>
-                  ))}
-                </ul>
-              </div>
+              <p className="audience-introduction">{s.audienceIntro}</p>
+              <ul className="audience-list">
+                {s.audience.map((a) => (
+                  <li key={a}>{a}</li>
+                ))}
+              </ul>
             </div>
           </div>
-          <div className="capability-grid" id="capabilities" data-stagger>
+          <div className="capabilities-heading" id="capabilities" data-reveal>
+            <span className="eyebrow">
+              {String(s.modules.length).padStart(2, "0")} core areas
+            </span>
+            <h2>
+              {s.slug === "school-management"
+                ? "What Classveew covers."
+                : "What you can manage."}
+            </h2>
+          </div>
+          <div className="capability-grid" data-stagger>
             {s.modules.map((m, i) => (
               <article
                 id={`module-${i}`}
@@ -136,101 +77,17 @@ export function SolutionPage({ solution: s }: { solution: Solution }) {
           </div>
         </div>
       </section>
-      {erp && <ProductExplorer compact />}
-      {school && (
-        <section className="classveew-section">
-          <div className="container classveew-grid">
-            <div className="classveew-image">
-              <Image
-                src="/images/education.webp"
-                alt="Illustrative school scene with a teacher supporting students"
-                fill
-                sizes="(max-width: 800px) 100vw, 40vw"
-              />
-            </div>
-            <div data-reveal>
-              <span className="eyebrow">Classveew in Bahrain</span>
-              <h2>
-                School information.
-                <br />A more connected day.
-              </h2>
-              <p>
-                Classveew is currently serving schools in Bahrain. Bring your
-                admissions, attendance, timetable and gradebook requirements to
-                a demonstration, and explore how the platform supports your
-                school.
-              </p>
-              <TextLink href={href}>Meet Classveew</TextLink>
-            </div>
-          </div>
-        </section>
-      )}
-      <section className="solution-enquiry section-pad" id="solution-enquiry">
-        <div className="container enquiry-guidance-grid">
-          <div data-reveal>
-            <span className="eyebrow">Explore with Quantum</span>
-            <h2>
-              {service
-                ? "Tell us what you want to improve."
-                : "See how it fits your organisation."}
-            </h2>
-          </div>
-          <div data-reveal>
-            <p>
-              {service
-                ? "The most useful conversation starts with your current way of working. Share the tasks, information and business priorities you want to address, and we’ll discuss the relevant capabilities with you."
-                : "A demonstration is a chance to focus on the work your team actually does. Tell us which areas matter most, so you can explore the relevant functionality and ask the questions specific to your organisation."}
-            </p>
-            <ul className="enquiry-checklist">
-              <li>
-                <Check size={17} />
-                Your current processes and requirements
-              </li>
-              <li>
-                <Check size={17} />
-                {service
-                  ? "The scope and functionality to confirm"
-                  : "The capabilities you want to see"}
-              </li>
-              <li>
-                <Check size={17} />
-                Setup and support to discuss with Quantum
-              </li>
-            </ul>
-            <TextLink href={href}>
-              {service
-                ? "Discuss your requirements"
-                : "Arrange a demonstration"}
-            </TextLink>
-          </div>
-        </div>
-      </section>
+      <ProductExplorer product={s.preview} compact />
       <FAQ
+        id="questions"
+        title={
+          s.slug === "school-management"
+            ? "Questions about Classveew."
+            : `Questions about ${s.name}.`
+        }
         items={s.faqs}
-        title={`More about ${school ? "Classveew" : s.name}.`}
       />
-      <section className="related-section">
-        <div className="container">
-          <h2 data-reveal>Also from Quantum.</h2>
-          <div className="related-grid" data-stagger>
-            {related.map((r) => (
-              <Link
-                className="related-link"
-                href={solutionHref(r.slug)}
-                key={r.slug}
-                data-reveal
-              >
-                <div>
-                  <h3>{r.name}</h3>
-                  <p>{r.short}</p>
-                </div>
-                <ArrowUpRight size={23} />
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-      <ContactCTA solution={s.name} />
+      <SolutionEnquiry solution={s} />
     </>
   );
 }

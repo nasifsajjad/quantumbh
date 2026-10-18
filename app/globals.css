@@ -63,10 +63,12 @@
     --edge: 16px;
     --cell: clamp(24px, 2vw, 38px);
     --reading-progress: 0;
+    --header-height: 65px;
+    --section-nav-height: 0px;
   }
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 90px;
+    scroll-padding-top: calc(var(--header-height) + var(--section-nav-height));
   }
   body {
     background: var(--paper);
@@ -1852,6 +1854,307 @@
     text-decoration: underline;
     text-underline-offset: 3px;
   }
+  /* Page structure and content shared by the product and service pages. */
+  main [id] {
+    scroll-margin-top: 24px;
+  }
+  .home-product-section {
+    padding-top: 90px;
+  }
+  .page-nav-wrap {
+    position: sticky;
+    top: var(--header-height);
+    z-index: 25;
+    background: var(--paper);
+  }
+  .page-nav {
+    padding-block: 21px;
+  }
+  .page-nav > a {
+    position: relative;
+    line-height: 1.5;
+    transition: color 0.25s;
+  }
+  .page-nav > a::after {
+    content: "";
+    position: absolute;
+    bottom: -22px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--gold-dark);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .page-nav > a[aria-current="location"] {
+    color: var(--gold-dark);
+  }
+  .page-nav > a[aria-current="location"]::after {
+    transform: scaleX(1);
+  }
+  .audience-introduction {
+    margin: 23px 0;
+  }
+  .capabilities-heading {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 30px;
+  }
+  .capabilities-heading h2 {
+    font-size: 1.875rem;
+  }
+  .capabilities-section .capabilities-intro {
+    margin-bottom: 65px;
+  }
+  .institution-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-inline: calc(-1 * var(--cell));
+    border-block: 1px solid var(--line);
+  }
+  .institution-grid article {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 35px var(--cell) 40px;
+  }
+  .institution-grid article + article {
+    border-left: 1px solid var(--line);
+  }
+  .institution-grid h3 {
+    font-size: 1.875rem;
+    margin: 30px 0 22px;
+    max-width: 480px;
+  }
+  .institution-grid p {
+    color: var(--muted);
+    font-size: 1.0625rem;
+    max-width: 550px;
+  }
+  .institution-grid ul {
+    display: grid;
+    gap: 12px;
+    margin: 25px 0;
+    font-size: 0.9375rem;
+  }
+  .institution-grid li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    line-height: 1.5;
+  }
+  .institution-grid li::before {
+    content: "";
+    width: 5px;
+    height: 5px;
+    background: var(--gold-dark);
+    flex-shrink: 0;
+  }
+  .institution-grid .text-link {
+    margin-top: auto;
+  }
+  .offering-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-inline: calc(-1 * var(--cell));
+    border-block: 1px solid var(--line);
+  }
+  .offering-grid article {
+    padding: 32px var(--cell) 35px;
+  }
+  .offering-grid article + article {
+    border-left: 1px solid var(--line);
+  }
+  .offering-grid h3 {
+    font-size: 1.5rem;
+    margin-bottom: 24px;
+  }
+  .offering-grid p {
+    font-size: 1rem;
+    color: var(--muted);
+    margin-bottom: 25px;
+  }
+  .offering-grid a {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 13px 0;
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+  .offering-grid a > svg {
+    margin-top: 3px;
+  }
+  .offering-grid a:hover {
+    color: var(--gold-dark);
+  }
+  .about-approach {
+    padding-top: 0;
+  }
+  .about-approach .section-intro {
+    margin-bottom: 40px;
+  }
+  .company-facts strong {
+    font-size: 1.3rem;
+  }
+  .company-contact-list {
+    display: grid;
+    gap: 18px;
+    margin-top: 25px;
+  }
+  .company-contact-list dt {
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .company-contact-list dd {
+    font-size: 1rem;
+    overflow-wrap: anywhere;
+  }
+  .company-contact-list dd > a {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  .service-overview .capabilities-intro {
+    margin-bottom: 65px;
+  }
+  .service-context .section-intro {
+    margin-bottom: 30px;
+  }
+  .service-context-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-block: 1px solid var(--line);
+    margin-inline: calc(-1 * var(--cell));
+  }
+  .service-context-grid article {
+    padding: 32px var(--cell) 40px;
+  }
+  .service-context-grid article + article {
+    border-left: 1px solid var(--line);
+  }
+  .service-context-grid h3 {
+    font-size: 1.625rem;
+    margin-bottom: 22px;
+    max-width: 470px;
+  }
+  .service-context-grid p {
+    color: var(--muted);
+    font-size: 1.0625rem;
+    max-width: 550px;
+  }
+  .requirements-section {
+    padding-top: 0;
+  }
+  .requirements-grid {
+    display: grid;
+    grid-template-columns: 45% 55%;
+    gap: 0;
+    padding-right: 0;
+  }
+  .requirements-grid > div:first-child {
+    padding-right: 60px;
+  }
+  .requirements-grid h2 {
+    margin: 22px 0 28px;
+  }
+  .requirements-grid > div > p {
+    font-size: 1.0625rem;
+    color: var(--muted);
+    max-width: 470px;
+  }
+  .solution-enquiry {
+    padding-block: 65px;
+  }
+  .solution-enquiry .eyebrow {
+    color: #57451f;
+  }
+  .solution-enquiry .enquiry-guidance-grid p {
+    color: #343526;
+  }
+  .solution-enquiry .enquiry-checklist > li {
+    color: var(--ink);
+  }
+  .solution-enquiry .enquiry-checklist svg {
+    color: #57451f;
+  }
+  .solution-enquiry .container {
+    border-color: #bba065;
+  }
+  .solution-enquiry .button {
+    width: 100%;
+    max-width: 480px;
+  }
+  .software-sample-label {
+    font-size: 0.6875rem;
+    color: #60665a;
+    line-height: 1.5;
+  }
+  .software-body {
+    animation: panel-enter 0.32s ease both;
+  }
+  .software-window tbody tr {
+    animation: record-enter 0.3s ease both;
+    animation-delay: calc(var(--row-index, 0) * 35ms);
+    transition: background 0.2s;
+  }
+  .software-window tbody tr:hover {
+    background: #f7f7f1;
+  }
+  @keyframes record-enter {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .explorer-tabs button {
+    transition: color 0.25s;
+  }
+  .explorer-tabs button::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .explorer-tabs button[aria-selected="true"]::after {
+    transform: scaleX(1);
+  }
+  .contact-office {
+    margin-top: 32px;
+  }
+  .contact-office .contact-address {
+    margin-top: 15px;
+  }
+  .contact-company {
+    margin-top: 23px;
+    font-size: 0.8125rem;
+    color: var(--muted);
+  }
+  .enquiry-form-intro {
+    font-size: 0.9375rem;
+    color: var(--muted);
+    margin-bottom: 30px;
+  }
+  .enquiry-tabs {
+    margin-bottom: 25px;
+  }
+  .contact-next-section {
+    padding-bottom: 75px;
+  }
 }
 @layer responsive {
   @media (min-width: 1920px) {
@@ -2089,7 +2392,9 @@
       --cell: 20px;
     }
     html {
-      scroll-padding-top: 85px;
+      scroll-padding-top: calc(
+        var(--header-height) + var(--section-nav-height)
+      );
     }
     .container {
       width: 100%;
@@ -2821,6 +3126,152 @@
     }
     .form-submit {
       min-width: 0;
+    }
+  }
+
+  @media (max-width: 1200px) {
+    .requirements-grid > div:first-child {
+      padding-right: 35px;
+    }
+    .page-nav {
+      gap: 25px;
+    }
+    .software-sample-label {
+      font-size: 0.625rem;
+    }
+  }
+  @media (max-width: 1000px) {
+    .requirements-grid {
+      grid-template-columns: 42% 58%;
+    }
+    .institution-grid h3 {
+      font-size: 1.625rem;
+    }
+    .offering-grid h3 {
+      font-size: 1.375rem;
+    }
+    .offering-grid a {
+      font-size: 0.9375rem;
+    }
+  }
+  @media (max-width: 800px) {
+    main [id] {
+      scroll-margin-top: 24px;
+    }
+    .home-product-section {
+      padding-top: 65px;
+    }
+    .page-nav-wrap {
+      position: static;
+    }
+    .page-nav {
+      padding-block: 18px;
+      gap: 18px 25px;
+    }
+    .page-nav > a::after {
+      bottom: -4px;
+    }
+    .capabilities-heading {
+      display: block;
+      margin-bottom: 25px;
+    }
+    .capabilities-heading .eyebrow {
+      margin-bottom: 15px;
+    }
+    .capabilities-heading h2 {
+      font-size: 1.625rem;
+    }
+    .capabilities-section .capabilities-intro,
+    .service-overview .capabilities-intro {
+      margin-bottom: 45px;
+    }
+    .audience-introduction {
+      margin-block: 20px;
+    }
+    .institution-grid {
+      grid-template-columns: 1fr;
+    }
+    .institution-grid article {
+      padding-block: 30px;
+    }
+    .institution-grid article + article {
+      border-left: 0;
+      border-top: 1px solid var(--line);
+    }
+    .institution-grid h3 {
+      margin-top: 25px;
+      font-size: 1.625rem;
+    }
+    .institution-grid p {
+      font-size: 1rem;
+    }
+    .institution-grid ul {
+      font-size: 0.875rem;
+    }
+    .offering-grid {
+      grid-template-columns: 1fr;
+    }
+    .offering-grid article + article {
+      border-left: 0;
+      border-top: 1px solid var(--line);
+    }
+    .offering-grid a {
+      font-size: 1rem;
+    }
+    .offering-grid h3 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+    .about-approach {
+      padding-top: 0;
+    }
+    .company-facts strong {
+      font-size: 1.125rem;
+    }
+    .service-context-grid {
+      grid-template-columns: 1fr;
+    }
+    .service-context-grid article + article {
+      border-left: 0;
+      border-top: 1px solid var(--line);
+    }
+    .service-context-grid h3 {
+      font-size: 1.5rem;
+    }
+    .service-context-grid p {
+      font-size: 1rem;
+    }
+    .requirements-section {
+      padding-top: 0;
+    }
+    .requirements-grid {
+      grid-template-columns: 1fr;
+      padding: 0;
+    }
+    .requirements-grid > div:first-child {
+      padding: 0 var(--cell) 30px;
+    }
+    .requirements-grid > div > p {
+      font-size: 1rem;
+      max-width: 600px;
+    }
+    .solution-enquiry {
+      padding-block: 45px;
+    }
+    .solution-enquiry .enquiry-guidance-grid p {
+      font-size: 1rem;
+    }
+    .solution-enquiry .button {
+      max-width: none;
+    }
+    .software-sample-label {
+      font-size: 0.625rem;
+    }
+    .contact-next-section {
+      padding-bottom: 60px;
+    }
+    .contact-office {
+      margin-top: 30px;
     }
   }
   @supports (interpolate-size: allow-keywords) {

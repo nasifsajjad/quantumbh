@@ -22,7 +22,8 @@ export function EnquiryForm({
     e.preventDefault();
     const data = new FormData(e.currentTarget);
     const subject = `${kind} — ${data.get("solution") || "Quantum Software Solutions"}`;
-    const body = `Hello Quantum team,\n\nI would like to ${kind === "Request a demo" ? "request a demo" : "discuss an enquiry"}.\n\nName: ${data.get("name")}\nCompany: ${data.get("company")}\nEmail: ${data.get("email")}\nPhone: ${data.get("phone") || "Not provided"}\nSolution: ${data.get("solution") || "Please advise"}\n\n${data.get("message")}\n\nKind regards,\n${data.get("name")}`;
+    const body = `Hello Quantum team,\n\nI would like to ${kind === "Request a demo" ? "request a demo" : "discuss an enquiry"}.\n\nName: ${data.get("name")}\nCompany: ${data.get("company")}\nEmail: ${data.get("email")}\nPhone: ${data.get("phone") || "Not provided"}\nSolution: ${data.get("solution") || "Please advise"}\n\n${data.get("message") || "Please contact me to discuss a demonstration."}\n\nKind regards,\n${data.get("name")}`;
+    setCopied(false);
     setDraft({
       subject,
       body,
@@ -51,12 +52,18 @@ export function EnquiryForm({
             onClick={() => {
               setKind(k);
               setDraft(null);
+              setCopied(false);
             }}
           >
             {k}
           </button>
         ))}
       </div>
+      <p className="enquiry-form-intro">
+        {kind === "Request a demo"
+          ? "Choose the product you want to explore. Add any requirements you would like to discuss."
+          : "Tell us about the solution or project you have in mind."}
+      </p>
       <form
         onSubmit={submit}
         onChange={() => {
@@ -127,20 +134,31 @@ export function EnquiryForm({
             </option>
             {solutions.map((s) => (
               <option key={s.slug} value={s.name}>
-                {s.name}
+                {s.slug === "school-management"
+                  ? "School Management (Classveew)"
+                  : s.name}
               </option>
             ))}
             <option value="Help me choose">Help me choose</option>
           </select>
         </label>
         <label htmlFor="message">
-          How can we help? <span>*</span>
+          How can we help?{" "}
+          {kind === "Request a demo" ? (
+            <small>(optional)</small>
+          ) : (
+            <span>*</span>
+          )}
           <textarea
             id="message"
             name="message"
-            placeholder="Tell us what you’re looking for."
+            placeholder={
+              kind === "Request a demo"
+                ? "Any areas you would like to see in the demo?"
+                : "Tell us about your organisation and what you need."
+            }
             rows={4}
-            required
+            required={kind !== "Request a demo"}
             maxLength={4000}
           />
         </label>
