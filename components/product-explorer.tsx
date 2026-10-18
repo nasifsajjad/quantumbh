@@ -1,12 +1,13 @@
 "use client";
 import { useState } from "react";
+import { TextLink } from "./ui";
 import { ChevronRight, FileText, Layers3, BarChart3 } from "lucide-react";
 const views = [
   {
     label: "Accounting",
     icon: FileText,
     heading: "Keep your accounts in order.",
-    text: "General ledger, invoices, receivables and payables.",
+    text: "From the general ledger to individual invoices, keep track of income, expenses, receivables and payables. Organise the financial records behind everyday transactions.",
     tags: ["General ledger", "Invoicing", "Receivables & payables"],
     title: "Invoices",
     sub: "A simple view of outstanding and settled transactions.",
@@ -22,7 +23,7 @@ const views = [
     label: "Inventory",
     icon: Layers3,
     heading: "Know what’s in stock.",
-    text: "Stock movements, valuation and low-stock alerts.",
+    text: "Follow stock quantities and movements, monitor inventory valuation and keep low-stock alerts in view. A clearer picture of what your business holds and what needs attention.",
     tags: ["Stock movements", "Low-stock alerts", "Inventory valuation"],
     title: "Inventory",
     sub: "Stock quantities and alerts, kept in view.",
@@ -38,7 +39,7 @@ const views = [
     label: "Reporting",
     icon: BarChart3,
     heading: "See how the business is doing.",
-    text: "Financial dashboards, cash flow and operational reporting.",
+    text: "Use financial dashboards, cash-flow monitoring and business-performance reports to make sense of your records. Bring financial and operational information into a more useful view.",
     tags: [
       "Financial dashboards",
       "Cash-flow monitoring",
@@ -73,12 +74,18 @@ export function ProductExplorer({ compact = false }: { compact?: boolean }) {
   };
   return (
     <section
+      id="product-preview"
       className={`product-explorer section-pad ${compact ? "compact-explorer" : ""}`}
     >
       <div className="container">
-        <h2 className="explorer-heading" data-reveal>
-          A closer look.
-        </h2>
+        <div className="section-intro" data-reveal>
+          <span className="eyebrow">ERP & Accounting</span>
+          <h2>One clearer view of your business.</h2>
+          <p>
+            Accounts, transactions and inventory belong in the same
+            conversation. Explore a few of the essentials.
+          </p>
+        </div>
         <div className="explorer-layout" data-reveal>
           <div className="explorer-info">
             <div
@@ -105,6 +112,20 @@ export function ProductExplorer({ compact = false }: { compact?: boolean }) {
             <div className="explorer-copy" key={view.label}>
               <h3>{view.heading}</h3>
               <p>{view.text}</p>
+              <ul className="explorer-tags">
+                {view.tags.map((tag) => (
+                  <li key={tag}>{tag}</li>
+                ))}
+              </ul>
+              <TextLink
+                href={
+                  compact
+                    ? "/contact?intent=demo&solution=ERP%20%26%20Accounting"
+                    : "/solutions/erp-accounting"
+                }
+              >
+                {compact ? "Request an ERP demo" : "Explore ERP & Accounting"}
+              </TextLink>
             </div>
           </div>
           <div

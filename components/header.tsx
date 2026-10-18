@@ -115,7 +115,7 @@ export function Header() {
             </Link>
           </nav>
           <div className="header-actions">
-            <Link href={demoHref()} className="button button-dark header-cta">
+            <Link href={demoHref()} className="button button-gold header-cta">
               Request a demo <ArrowUpRight size={17} />
             </Link>
           </div>
@@ -134,7 +134,7 @@ export function Header() {
           <div className="mega-menu" id="solutions-menu">
             <div className="mega-intro">
               <span className="eyebrow">Solutions</span>
-              <p>Solutions.</p>
+              <p>Software for your working day.</p>
               <Link
                 href="/#solutions"
                 onClick={() => setOpen(false)}

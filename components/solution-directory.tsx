@@ -1,131 +1,113 @@
 "use client";
-import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { ArrowUpRight, Plus, Minus } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { solutionHref, solutions } from "@/lib/content";
-const images: Record<string, { src: string; alt: string; label?: string }> = {
-  "erp-accounting": {
-    src: "/images/software-editorial.webp",
-    alt: "Illustrative accounting software shown on a laptop",
-    label: "Illustrative product visual",
+const groups = [
+  {
+    name: "Business systems",
+    description: "Bring the core work of your business into better order.",
+    slugs: ["erp-accounting", "hr-management", "sales-automation"],
   },
-  "hr-management": {
-    src: "/images/workplace.webp",
-    alt: "An editorial workplace scene",
+  {
+    name: "Healthcare & education",
+    description:
+      "Software for the people and processes behind your institution.",
+    slugs: ["hospital-management", "school-management"],
   },
-  "hospital-management": {
-    src: "/images/healthcare.webp",
-    alt: "An illustrative healthcare administration scene",
+  {
+    name: "Software development & AI",
+    description: "Start with a business need. Discuss a solution around it.",
+    slugs: ["software-development", "ai-solutions-support"],
   },
-  "school-management": {
-    src: "/images/education.webp",
-    alt: "An illustrative classroom scene",
-  },
-  "sales-automation": {
-    src: "/images/workplace.webp",
-    alt: "An editorial business scene",
-  },
-  "software-development": {
-    src: "/images/workplace.webp",
-    alt: "An editorial scene of people discussing their work",
-  },
-  "ai-solutions-support": {
-    src: "/images/workplace.webp",
-    alt: "An editorial workplace scene",
-  },
-};
+];
 export function SolutionDirectory() {
   const [active, setActive] = useState(0);
-  const [preview, setPreview] = useState(0);
+  function selectByKey(e: React.KeyboardEvent<HTMLButtonElement>, i: number) {
+    if (!["ArrowDown", "ArrowUp", "Home", "End"].includes(e.key)) return;
+    e.preventDefault();
+    const next =
+      e.key === "Home"
+        ? 0
+        : e.key === "End"
+          ? 2
+          : (i + (e.key === "ArrowDown" ? 1 : 2)) % 3;
+    setActive(next);
+    document.getElementById(`solution-tab-${next}`)?.focus();
+  }
   return (
     <section id="solutions" className="solution-directory section-pad">
       <div className="container">
-        <div className="section-heading-row" data-reveal>
-          <div>
-            <span className="eyebrow">Our solutions</span>
-            <h2>
-              Built for your
-              <br />
-              working day.
-            </h2>
-          </div>
-          <Link href="/contact" className="text-link">
-            Find your fit
-            <ArrowUpRight size={19} />
-          </Link>
+        <div className="section-intro" data-reveal>
+          <span className="eyebrow">Our solutions</span>
+          <h2>Software for the work that matters.</h2>
+          <p>
+            From your accounts to your people, explore practical systems and
+            services for businesses and institutions in Bahrain and the GCC.
+          </p>
         </div>
-        <div className="solution-showcase">
-          <div className="solution-accordion" data-reveal>
-            {solutions.map((s, i) => (
-              <div
-                className={`solution-accordion-item ${active === i ? "active" : ""}`}
-                key={s.slug}
+        <div className="directory-grid" data-reveal>
+          <div
+            className="directory-tabs"
+            role="tablist"
+            aria-label="Solution categories"
+            aria-orientation="vertical"
+          >
+            {groups.map((g, i) => (
+              <button
+                key={g.name}
+                id={`solution-tab-${i}`}
+                type="button"
+                role="tab"
+                aria-selected={active === i}
+                aria-controls={`solution-group-${i}`}
+                tabIndex={active === i ? 0 : -1}
+                onClick={() => setActive(i)}
+                onKeyDown={(e) => selectByKey(e, i)}
               >
-                <h3>
-                  <button
-                    type="button"
-                    aria-expanded={active === i}
-                    aria-controls={`solution-content-${i}`}
-                    onClick={() => {
-                      setActive((current) => (current === i ? -1 : i));
-                      setPreview(i);
-                    }}
-                  >
-                    <span className="solution-list-index" aria-hidden="true">
-                      0{i + 1}
-                    </span>
-                    <span>{s.name}</span>
-                    {active === i ? <Minus size={19} /> : <Plus size={19} />}
-                  </button>
-                </h3>
-                <div
-                  id={`solution-content-${i}`}
-                  hidden={active !== i}
-                  className="solution-accordion-content"
-                >
-                  <p>{s.short}</p>
-                  <Link href={solutionHref(s.slug)} className="text-link">
-                    Explore solution
-                    <ArrowUpRight size={17} />
-                  </Link>
-                </div>
+                {g.name}
+                <ArrowUpRight size={20} />
+              </button>
+            ))}
+          </div>
+          <div className="directory-content">
+            {groups.map((g, i) => (
+              <div
+                key={g.name}
+                id={`solution-group-${i}`}
+                role="tabpanel"
+                aria-labelledby={`solution-tab-${i}`}
+                hidden={active !== i}
+                tabIndex={0}
+                className="directory-panel"
+              >
+                <p className="directory-description">{g.description}</p>
+                {g.slugs.map((slug) => {
+                  const s = solutions.find((s) => s.slug === slug)!;
+                  return (
+                    <Link
+                      key={slug}
+                      href={solutionHref(slug)}
+                      className="directory-solution"
+                    >
+                      <div>
+                        <h3>{s.name}</h3>
+                        <p>{s.short}</p>
+                      </div>
+                      <ArrowUpRight size={23} />
+                    </Link>
+                  );
+                })}
               </div>
             ))}
           </div>
-          <div className="solution-preview-image" data-reveal>
-            {solutions.map((s, i) => {
-              const img = images[s.slug];
-              return (
-                <div
-                  key={s.slug}
-                  className={`solution-image-slide ${preview === i ? "active" : ""}`}
-                  aria-hidden={preview !== i}
-                >
-                  <Image
-                    src={img.src}
-                    alt={preview === i ? img.alt : ""}
-                    fill
-                    sizes="(max-width: 800px) 100vw, 46vw"
-                  />
-                  {img.label && (
-                    <span className="image-caption">{img.label}</span>
-                  )}
-                  <div className="solution-image-title">
-                    <span>{s.name}</span>
-                    <Link
-                      href={solutionHref(s.slug)}
-                      aria-label={`Explore ${s.name}`}
-                      tabIndex={preview === i ? 0 : -1}
-                    >
-                      <ArrowUpRight size={25} />
-                    </Link>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
         </div>
+        <Link className="full-width-link" href="/contact">
+          <span>
+            Not sure which solution fits? Let’s talk about your business.
+          </span>
+          <ArrowUpRight size={25} />
+        </Link>
       </div>
     </section>
   );
