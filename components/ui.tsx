@@ -50,7 +50,7 @@ export function FAQ({
           {items.map((item) => (
             <details key={item.question} name="faq">
               <summary>
-                {item.question}
+                <span>{item.question}</span>
                 <span className="accordion-symbol" aria-hidden="true" />
               </summary>
               <div className="faq-answer">

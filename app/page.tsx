@@ -1,15 +1,24 @@
+import { socialMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowDown, ArrowUpRight, Check } from "lucide-react";
+import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { ContactCTA, FAQ, TextLink } from "@/components/ui";
 import { Heading } from "@/components/heading";
 import { SolutionDirectory } from "@/components/solution-directory";
 import { ProductExplorer } from "@/components/product-explorer";
+import { ProductCanvas } from "@/components/product-canvas";
+import { productPreviews } from "@/lib/product-previews";
 import { demoHref, homeFaqs } from "@/lib/content";
+const social = socialMetadata(
+  "quantum",
+  "Quantum Software Solutions",
+  "Cloud business software for Bahrain and the GCC.",
+);
 export const metadata: Metadata = {
+  ...social,
   alternates: { canonical: "/" },
-  openGraph: { url: "/" },
+  openGraph: { ...social.openGraph, url: "/" },
 };
 export default function Home() {
   return (
@@ -17,81 +26,88 @@ export default function Home() {
       <section className="home-hero">
         <div className="hero-copy">
           <span className="eyebrow hero-eyebrow">
-            Business software · Bahrain & GCC
+            Quantum Software Solutions
           </span>
           <Heading
             lines={["Business software", "for Bahrain", "and the GCC."]}
           />
           <div className="hero-bottom">
             <p>
-              Quantum Software Solutions provides cloud business systems, custom
-              software development, and AI solutions and support. Software for
-              your accounts, people and everyday operations, from a
-              Bahrain-based technology partner.
+              Cloud business systems, custom software development, and AI
+              solutions and support. A Bahrain-based partner for the systems
+              behind your daily operations.
             </p>
-            <Link href={demoHref()} className="button button-gold hero-cta">
-              Request a demo
-              <ArrowUpRight size={25} />
-            </Link>
-            <a href="#solutions" className="hero-explore">
-              Explore our solutions
-              <ArrowDown size={16} />
-            </a>
+            <div className="hero-actions">
+              <Link href={demoHref()} className="button button-dark hero-cta">
+                Request a demo
+                <ArrowUpRight size={22} />
+              </Link>
+              <a href="#solutions" className="hero-explore">
+                Explore solutions
+                <ArrowDown size={17} />
+              </a>
+            </div>
+            <div className="hero-disciplines">
+              <span>Finance</span>
+              <span>People</span>
+              <span>Operations</span>
+            </div>
           </div>
         </div>
-        <div className="hero-visual" data-parallax="0.06">
-          <Image
-            src="/images/software-editorial.webp"
-            alt="Illustrative accounting software on a laptop in a sunlit workspace"
-            fill
-            priority
-            quality={90}
-            sizes="(max-width: 800px) 100vw, 50vw"
-            className="parallax-image"
-          />
-          <span className="hero-image-caption">
-            Illustrative product visual
-          </span>
-          <div className="hero-note">
-            <span className="eyebrow">A clearer working day</span>
-            <ul>
-              <li>
-                <span className="check-disc">
-                  <Check size={17} />
-                </span>
-                <span>Accounts, inventory and financial reporting</span>
-              </li>
-              <li>
-                <span className="check-disc">
-                  <Check size={17} />
-                </span>
-                <span>People, payroll, attendance and leave</span>
-              </li>
-              <li>
-                <span className="check-disc">
-                  <Check size={17} />
-                </span>
-                <span>Systems for healthcare and education</span>
-              </li>
-              <li>
-                <span className="check-disc">
-                  <Check size={17} />
-                </span>
-                <span>Custom software and practical AI support</span>
-              </li>
-            </ul>
+        <div className="hero-visual">
+          <div className="hero-photo-wrap">
+            <Image
+              src="/images/quantum-workspace.webp"
+              alt="Generated editorial scene of a laptop displaying a conceptual business software interface"
+              fill
+              priority
+              fetchPriority="high"
+              quality={90}
+              sizes="(max-width:800px) 100vw,50vw"
+            />
+          </div>
+          <div className="hero-photo-footer">
+            <Link href="/solutions/erp-accounting">
+              ERP & Accounting
+              <ArrowUpRight size={18} />
+            </Link>
+            <span>Illustrative software scene</span>
           </div>
         </div>
       </section>
-
-      <div className="scope-strip container">
-        <p>Accounts. People. Day-to-day operations.</p>
-        <span>Based in Bahrain · Serving the GCC</span>
-      </div>
       <SolutionDirectory />
       <div className="home-product-section">
         <ProductExplorer />
       </div>
+      <section className="hr-spotlight section-pad">
+        <div className="container hr-spotlight-grid">
+          <div data-reveal>
+            <span className="eyebrow">HR Management</span>
+            <h2>The records behind your people.</h2>
+            <p>
+              Employee information, payroll, attendance and leave. Keep the
+              regular work of HR administration in order.
+            </p>
+            <div className="hr-functions">
+              <span>Employee records</span>
+              <span>Payroll</span>
+              <span>Attendance</span>
+              <span>Leave</span>
+            </div>
+            <TextLink href="/solutions/hr-management">
+              Explore HR Management
+            </TextLink>
+          </div>
+          <div className="hr-spotlight-preview" data-reveal>
+            <ProductCanvas
+              product="hr"
+              brand="Quantum"
+              view={productPreviews.hr.views[1]}
+              compact
+            />
+          </div>
+        </div>
+      </section>
       <section className="industry-section section-pad">
         <div className="container">
           <div className="section-intro" data-reveal>
@@ -121,13 +137,18 @@ export default function Home() {
             </article>
             <article data-reveal>
               <span className="eyebrow">Classveew · School Management</span>
-              <h3>Bring school information together.</h3>
+              <h3 className="classveew-wordmark">
+                Classveew<span>School management by Quantum</span>
+              </h3>
               <p>
-                Manage admissions, attendance, timetables, gradebook and
-                parent-teacher communication. Classveew is Quantum’s
-                school-management platform, currently serving schools in
-                Bahrain.
+                Admissions, attendance, timetables, gradebook and parent-teacher
+                communication. One platform for the daily work of school
+                administration.
               </p>
+              <div className="classveew-proof">
+                <span aria-hidden="true" />
+                Currently serving schools in Bahrain.
+              </div>
               <ul>
                 <li>School administration & daily records</li>
                 <li>Parent-teacher communication</li>
@@ -149,7 +170,7 @@ export default function Home() {
               sizes="(max-width:800px) 100vw,40vw"
               className="parallax-image"
             />
-            <span>Kingdom of Bahrain</span>
+            <span>Illustrative view of Bahrain</span>
           </div>
           <div className="regional-copy" data-reveal>
             <span className="eyebrow">About Quantum</span>

@@ -47,7 +47,10 @@ export function SolutionPage({ solution: s }: { solution: Solution }) {
                 : "What you can manage."}
             </h2>
           </div>
-          <div className="capability-grid" data-stagger>
+          <div
+            className={`capability-grid capability-grid-${s.preview}`}
+            data-stagger
+          >
             {s.modules.map((m, i) => (
               <article
                 id={`module-${i}`}

@@ -15,7 +15,7 @@ export function ServicePage({ solution: s }: { solution: Solution }) {
     { id: "solution-enquiry", label: "Get in touch" },
   ];
   return (
-    <>
+    <div className={`service-page service-${s.slug}`}>
       <SolutionHero solution={s} sections={sections} />
       <section id="overview" className="service-overview section-pad">
         <div className="container">
@@ -74,7 +74,7 @@ export function ServicePage({ solution: s }: { solution: Solution }) {
               <details key={topic.title} name="requirements" open={i === 0}>
                 <summary>
                   <span>{String(i + 1).padStart(2, "0")}</span>
-                  {topic.title}
+                  <span className="requirement-title">{topic.title}</span>
                   <span className="accordion-symbol" aria-hidden="true" />
                 </summary>
                 <div>
@@ -86,6 +86,6 @@ export function ServicePage({ solution: s }: { solution: Solution }) {
         </div>
       </section>
       <SolutionEnquiry solution={s} />
-    </>
+    </div>
   );
 }

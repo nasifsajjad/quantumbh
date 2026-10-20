@@ -10,26 +10,40 @@ export function Footer() {
           <div className="footer-brand">
             <Brand inverse />
             <p>
-              Bahrain based.
+              Business software.
               <br />
-              GCC focused.
+              Bahrain & the GCC.
             </p>
-          </div>
-          <div className="footer-nav">
-            <span className="footer-label">Quantum</span>
-            <Link href="/about">About us</Link>
-            <Link href="/contact">Contact</Link>
-            <Link href="/contact?intent=demo">Request a demo</Link>
+            <div className="footer-company-links">
+              <Link href="/about">About Quantum</Link>
+              <Link href="/contact">Contact</Link>
+            </div>
           </div>
           <div className="footer-solutions">
-            <span className="footer-label">Solutions</span>
-            {solutions.map((s) => (
-              <Link key={s.slug} href={solutionHref(s.slug)}>
-                {s.name}
-              </Link>
-            ))}
+            <span className="footer-label">Business systems</span>
+            {solutions
+              .filter((s) => s.category === "systems")
+              .map((s) => (
+                <Link key={s.slug} href={solutionHref(s.slug)}>
+                  {s.slug === "school-management"
+                    ? "Classveew · School Management"
+                    : s.name}
+                </Link>
+              ))}
+          </div>
+          <div className="footer-nav">
+            <span className="footer-label">Development & AI</span>
+            {solutions
+              .filter((s) => s.category === "services")
+              .map((s) => (
+                <Link key={s.slug} href={solutionHref(s.slug)}>
+                  {s.name}
+                </Link>
+              ))}
+            <Link href="/contact?intent=demo">Request a demo</Link>
           </div>
           <div className="footer-contact">
+            <span className="footer-label">Speak with Quantum</span>
             <a href={`mailto:${company.email}`}>
               {company.email}
               <ArrowUpRight size={17} />

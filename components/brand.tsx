@@ -8,15 +8,12 @@ export function Brand({ inverse = false }: { inverse?: boolean }) {
       aria-label="Quantum Software Solutions home"
     >
       <Image
-        src="/images/quantum-mark.png"
+        src={`/brand/quantum-logo${inverse ? "-light" : ""}.svg`}
+        width={245}
+        height={64}
         alt=""
-        width={48}
-        height={48}
         priority
       />
-      <span>
-        Quantum<span className="brand-descriptor">SOFTWARE SOLUTIONS</span>
-      </span>
     </Link>
   );
 }

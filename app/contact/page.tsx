@@ -1,15 +1,22 @@
+import { socialMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { EnquiryForm } from "@/components/enquiry-form";
 import { Heading } from "@/components/heading";
 import { company } from "@/lib/content";
+const social = socialMetadata(
+  "contact",
+  "Contact Quantum",
+  "Request a demonstration or discuss your software requirements.",
+);
 export const metadata: Metadata = {
+  ...social,
   title: "Contact & Request a Demo",
   description:
     "Contact Quantum Software Solutions in Bahrain. Request a product demonstration or discuss your software requirements at sales@quantumbh.net or +973 3216 6628.",
   alternates: { canonical: "/contact" },
-  openGraph: { url: "/contact", title: "Contact Quantum" },
+  openGraph: { ...social.openGraph, url: "/contact" },
 };
 export default async function Contact({
   searchParams,
@@ -118,6 +125,13 @@ export default async function Contact({
             shared with Quantum when you send the email. For questions about an
             enquiry or your information, contact{" "}
             <a href={`mailto:${company.email}`}>{company.email}</a>.
+            {process.env.NEXT_PUBLIC_ENABLE_ANALYTICS === "true" && (
+              <span className="analytics-disclosure">
+                We use Vercel Web Analytics to measure page visits and website
+                interactions. Enquiry form contents are excluded from these
+                analytics events.
+              </span>
+            )}
           </p>
         </div>
       </section>

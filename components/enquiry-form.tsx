@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { ArrowUpRight, Check, Copy, Mail } from "lucide-react";
+import { measure } from "@/lib/measurement";
 import { solutions } from "@/lib/content";
 export function EnquiryForm({
   intent,
@@ -23,6 +24,10 @@ export function EnquiryForm({
     const data = new FormData(e.currentTarget);
     const subject = `${kind} — ${data.get("solution") || "Quantum Software Solutions"}`;
     const body = `Hello Quantum team,\n\nI would like to ${kind === "Request a demo" ? "request a demo" : "discuss an enquiry"}.\n\nName: ${data.get("name")}\nCompany: ${data.get("company")}\nEmail: ${data.get("email")}\nPhone: ${data.get("phone") || "Not provided"}\nSolution: ${data.get("solution") || "Please advise"}\n\n${data.get("message") || "Please contact me to discuss a demonstration."}\n\nKind regards,\n${data.get("name")}`;
+    measure("enquiry_draft_prepared", {
+      kind,
+      solution: String(data.get("solution") || "Help me choose"),
+    });
     setCopied(false);
     setDraft({
       subject,
@@ -189,7 +194,11 @@ export function EnquiryForm({
             <strong>sales@quantumbh.net</strong>. Nothing has been sent yet.
           </p>
           <div className="enquiry-ready-actions">
-            <a className="button button-dark" href={draft.mailto}>
+            <a
+              className="button button-dark"
+              href={draft.mailto}
+              onClick={() => measure("enquiry_email_opened", { kind })}
+            >
               Open email draft
               <ArrowUpRight size={17} />
             </a>
@@ -202,6 +211,7 @@ export function EnquiryForm({
                     `To: sales@quantumbh.net\nSubject: ${draft.subject}\n\n${draft.body}`,
                   );
                   setCopied(true);
+                  measure("enquiry_copied", { kind });
                 } catch {
                   setCopied(false);
                   document.getElementById("draft-content")?.focus();

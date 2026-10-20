@@ -1,3 +1,4 @@
+import { socialMetadata } from "@/lib/seo";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { solutions, solutionHref } from "@/lib/content";
@@ -14,7 +15,13 @@ export async function generateMetadata({
   const { slug } = await params;
   const s = solutions.find((s) => s.slug === slug);
   if (!s) return {};
+  const social = socialMetadata(
+    slug,
+    s.slug === "school-management" ? "Classveew · School Management" : s.name,
+    s.description,
+  );
   return {
+    ...social,
     title:
       s.name === "School Management"
         ? "Classveew · School Management in Bahrain"
@@ -22,8 +29,7 @@ export async function generateMetadata({
     description: s.description,
     alternates: { canonical: solutionHref(slug) },
     openGraph: {
-      title: s.name,
-      description: s.description,
+      ...social.openGraph,
       url: solutionHref(slug),
     },
   };

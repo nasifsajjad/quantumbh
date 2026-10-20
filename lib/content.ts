@@ -33,7 +33,6 @@ export type Solution = {
   faqs: { question: string; answer: string }[];
   enquiryTitle: string;
   enquiryText: string;
-  enquiryPoints: string[];
   cta: string;
 };
 export type ServiceContent = {
@@ -137,7 +136,7 @@ export const solutions: Solution[] = [
       {
         question: "Is the software cloud-based?",
         answer:
-          "Quantum’s products are positioned around cloud access and centrally managed business information. Our team can explain the available setup and technical details for the product you are considering.",
+          "Yes. Quantum’s business software is cloud-based, with centrally managed information. Contact our team for the setup and technical details of the product you are considering.",
       },
       {
         question: "Can we focus a demonstration on particular areas?",
@@ -148,11 +147,6 @@ export const solutions: Solution[] = [
     enquiryTitle: "Explore ERP & Accounting with Quantum.",
     enquiryText:
       "Tell us how your business manages accounts, stock and transactions today. Request a demonstration focused on the areas your team needs to understand.",
-    enquiryPoints: [
-      "The type of business you run",
-      "The accounts and stock records you manage",
-      "The functions you want to explore",
-    ],
     cta: "Request an ERP demo",
   },
   {
@@ -178,19 +172,19 @@ export const solutions: Solution[] = [
       {
         title: "Employee records",
         description:
-          "Keep employee information organised in the HR system. Give the people responsible for administration a structured record they can maintain and refer to.",
+          "Maintain employee information in a structured record your HR and administration teams can refer to.",
         items: [],
       },
       {
         title: "Payroll",
         description:
-          "Manage the regular work around employee pay. Keep payroll information organised as part of your HR administration.",
+          "Manage payroll information alongside your employee records and regular HR administration.",
         items: [],
       },
       {
         title: "Attendance",
         description:
-          "Maintain day-to-day attendance records. Keep the information your team needs to review employee attendance in one place.",
+          "Record daily attendance and keep the information together for your team to review.",
         items: [],
       },
       {
@@ -204,7 +198,7 @@ export const solutions: Solution[] = [
       {
         question: "Which HR functions does the system cover?",
         answer:
-          "The confirmed functions are employee records, payroll, attendance and leave management. Contact Quantum to discuss the requirements of your organisation.",
+          "The system covers employee records, payroll, attendance and leave management. Tell us which areas you would like to see in a demonstration.",
       },
       {
         question: "Can we discuss our Bahrain or GCC operations?",
@@ -220,11 +214,6 @@ export const solutions: Solution[] = [
     enquiryTitle: "Take a closer look at HR Management.",
     enquiryText:
       "Bring the HR tasks your team handles every month. We can discuss the system around your employee records, payroll, attendance and leave requirements.",
-    enquiryPoints: [
-      "Your current HR administration",
-      "The functions your team needs to see",
-      "Your setup and support questions",
-    ],
     cta: "Request an HR demo",
   },
   {
@@ -244,13 +233,13 @@ export const solutions: Solution[] = [
     detail:
       "A hospital or clinic needs well-organised information throughout the day. Quantum’s Hospital Management System focuses on the operational work around patient records, appointments, billing and pharmacy, helping administration teams keep these areas in order.",
     audienceIntro:
-      "For hospitals, clinics and the teams coordinating their daily administration. Discuss your organisation’s requirements with Quantum to establish the relevant scope.",
+      "For hospitals, clinics and the teams coordinating their daily administration.",
     audience: ["Hospitals", "Clinics", "Healthcare administration"],
     modules: [
       {
         title: "Patient records",
         description:
-          "Organise patient information in structured records, so the team responsible for administration can maintain and refer to the details it works with.",
+          "Keep patient information in structured records for the teams responsible for healthcare administration.",
         items: [],
       },
       {
@@ -268,7 +257,7 @@ export const solutions: Solution[] = [
       {
         title: "Pharmacy operations",
         description:
-          "Support the operational work of your pharmacy within the hospital-management offering. Discuss your pharmacy requirements with Quantum as part of the product conversation.",
+          "Manage pharmacy operations as part of the hospital-management system. Ask Quantum about the functions relevant to your pharmacy.",
         items: [],
       },
     ],
@@ -292,11 +281,6 @@ export const solutions: Solution[] = [
     enquiryTitle: "Discuss your hospital or clinic.",
     enquiryText:
       "Request a demonstration around the operational information your team manages. Tell us which areas matter most, from patient records and appointments to billing and pharmacy.",
-    enquiryPoints: [
-      "Your organisation and current administration",
-      "The areas you would like to see",
-      "Your product and setup questions",
-    ],
     cta: "Request a hospital system demo",
   },
   {
@@ -311,7 +295,7 @@ export const solutions: Solution[] = [
     title: "Classveew.",
     accent: "Software for the school day.",
     description:
-      "Admissions, attendance, timetables, gradebook and parent-teacher communication. School-management software by Quantum, currently serving schools in Bahrain.",
+      "Admissions, attendance, timetables, gradebook and parent-teacher communication. One platform for the daily work of school administration.",
     intro: "For the work that keeps a school organised.",
     detail:
       "School administration carries on throughout the academic year. Classveew helps schools keep admissions, attendance, timetables and grade information organised, alongside communication between parents and teachers.",
@@ -322,7 +306,7 @@ export const solutions: Solution[] = [
       {
         title: "Admissions",
         description:
-          "Keep admissions information organised from the start of a student’s time at school. Maintain the records needed for this part of school administration.",
+          "Organise the admissions information and records at the start of a student’s time at school.",
         items: [],
       },
       {
@@ -340,7 +324,7 @@ export const solutions: Solution[] = [
       {
         title: "Gradebook",
         description:
-          "Maintain grade information in a structured record, helping the school organise and refer to its academic records.",
+          "Keep grade information in a structured academic record for your school to maintain and refer to.",
         items: [],
       },
       {
@@ -370,11 +354,6 @@ export const solutions: Solution[] = [
     enquiryTitle: "See Classveew with your school in mind.",
     enquiryText:
       "Tell us how your school manages its information today. Request a demonstration focused on the functions your administration and teaching teams want to explore.",
-    enquiryPoints: [
-      "Your school and administrative needs",
-      "The functions you want to explore",
-      "Questions from your school team",
-    ],
     cta: "Request a Classveew demo",
   },
   {
@@ -400,11 +379,6 @@ export const solutions: Solution[] = [
     enquiryTitle: "Tell us what you need to build.",
     enquiryText:
       "You do not need a technical specification to start the conversation. An outline of your current process, the people involved and the result you want is a useful beginning.",
-    enquiryPoints: [
-      "The process you want to support",
-      "Who will use the software",
-      "What a useful result would look like",
-    ],
     cta: "Discuss your project",
   },
   {
@@ -443,11 +417,6 @@ export const solutions: Solution[] = [
     enquiryTitle: "Discuss an AI requirement.",
     enquiryText:
       "Tell us about the work you want to improve or the assistance you need. We’ll discuss the relevant capabilities and establish a suitable starting point.",
-    enquiryPoints: [
-      "Your business task or question",
-      "Your current way of working",
-      "The assistance you are looking for",
-    ],
     cta: "Discuss an AI requirement",
   },
   {
@@ -464,7 +433,7 @@ export const solutions: Solution[] = [
       "Discuss a more efficient way to handle sales work. Start with the tasks your team repeats and the parts of the process you want to improve.",
     intro: "Start with the work around a sale.",
     detail:
-      "Sales teams need to spend time on customers while keeping the administration around their work in order. Quantum’s sales automation offering is a starting point for discussing those operational needs. Explain your current process so the available functionality and fit can be confirmed.",
+      "Sales teams need to spend time on customers while keeping the administration around their work in order. Talk to Quantum about the tasks you want to simplify and the functionality your business needs.",
     audienceIntro:
       "For businesses reviewing their sales processes and teams looking at how software could support their daily work.",
     audience: ["Businesses reviewing sales work", "Sales teams"],
@@ -473,11 +442,6 @@ export const solutions: Solution[] = [
     enquiryTitle: "Discuss your sales process.",
     enquiryText:
       "Walk us through how your team works today and where time is being spent. Quantum can discuss your requirements and confirm the relevant functionality with you.",
-    enquiryPoints: [
-      "The daily tasks around a sale",
-      "The information your team needs",
-      "The work you want to make simpler",
-    ],
     cta: "Discuss your sales process",
   },
 ];
@@ -518,7 +482,7 @@ export const serviceContent: Record<string, ServiceContent> = {
     ],
   },
   "ai-solutions-support": {
-    sectionLabel: "Two ways to work with Quantum",
+    sectionLabel: "AI solutions & AI support",
     contextTitle: "AI solutions and AI support.",
     situations: [],
     discussionTitle: "Give the conversation a clear starting point.",
@@ -580,7 +544,7 @@ export const homeFaqs = [
   {
     question: "Are Quantum’s products cloud-based?",
     answer:
-      "Quantum’s products are positioned around cloud access and centrally managed business information. Contact our team to discuss the available setup and technical details for the product you are considering.",
+      "Yes. Quantum’s business software is cloud-based, with centrally managed information. Ask our team about the setup and technical details for your chosen product.",
   },
   {
     question: "How do I request a demonstration?",

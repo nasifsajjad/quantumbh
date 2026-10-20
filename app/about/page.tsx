@@ -1,3 +1,4 @@
+import { socialMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -5,12 +6,18 @@ import { ArrowUpRight } from "lucide-react";
 import { ContactCTA, TextLink } from "@/components/ui";
 import { Heading } from "@/components/heading";
 import { company, solutions, solutionHref } from "@/lib/content";
+const social = socialMetadata(
+  "about",
+  "About Quantum",
+  "A Bahrain-based business software company, established in 2026.",
+);
 export const metadata: Metadata = {
+  ...social,
   title: "About Quantum · Bahrain-Based Business Software",
   description:
     "Meet Quantum Software Solutions WLL, established in Bahrain in 2026. Cloud business systems, custom software development and AI solutions for Bahrain and the GCC.",
   alternates: { canonical: "/about" },
-  openGraph: { url: "/about", title: "About Quantum" },
+  openGraph: { ...social.openGraph, url: "/about" },
 };
 const groups = [
   {

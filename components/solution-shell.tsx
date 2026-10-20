@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowDown, ArrowUpRight, Check } from "lucide-react";
+import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { Heading } from "./heading";
 import { PageNav } from "./page-nav";
 import { enquiryHref, type Solution } from "@/lib/content";
@@ -13,64 +13,79 @@ export function SolutionHero({
   const school = s.slug === "school-management";
   return (
     <>
-      <section className="solution-hero">
+      <section
+        className={`solution-hero solution-hero-${s.preview || s.slug} ${s.kind === "service" ? "service-hero" : ""}`}
+      >
         <div className="container">
           <div className="breadcrumbs">
             <Link href="/">Home</Link>
             <span>/</span>
             <Link href="/#solutions">Solutions</Link>
             <span>/</span>
-            <span>{s.name}</span>
+            <span>{school ? "Classveew" : s.name}</span>
           </div>
           <div className="solution-hero-grid">
             <div className="solution-hero-copy">
               <span className="eyebrow">{s.eyebrow}</span>
-              <Heading lines={school ? [s.title] : [s.title, s.accent]} />
-              {school && <p className="school-tagline">{s.accent}</p>}
+              <Heading lines={school ? ["Classveew"] : [s.title, s.accent]} />
+              {school && (
+                <p className="school-tagline">School management by Quantum.</p>
+              )}
               <p className="solution-lead">{s.description}</p>
               <div className="solution-primary-action">
-                <Link href={enquiryHref(s)} className="button button-gold">
+                <Link href={enquiryHref(s)} className="button button-dark">
                   {s.kind === "product" ? "Request a demo" : s.cta}
-                  <ArrowUpRight size={23} />
+                  <ArrowUpRight size={22} />
                 </Link>
               </div>
               {school && (
-                <span className="school-use-note">
-                  Classveew is a Quantum school-management platform.
+                <span className="classveew-proof">
+                  <i aria-hidden="true" />
+                  Currently serving schools in Bahrain.
                 </span>
               )}
             </div>
-            <aside className="solution-at-a-glance">
-              <span className="eyebrow">
-                {s.kind === "product" ? "Core capabilities" : "On this page"}
-              </span>
-              <h2>
-                {s.kind === "product"
-                  ? school
+            {s.kind === "product" ? (
+              <aside className="solution-at-a-glance">
+                <span className="eyebrow">Core capabilities</span>
+                <h2>
+                  {school
                     ? "The school day, organised."
-                    : "What the system covers."
-                  : "Explore the offering."}
-              </h2>
-              <ul>
-                {s.kind === "product"
-                  ? s.modules.map((m, i) => (
-                      <li key={m.title}>
-                        <a href={`#module-${i}`}>
-                          <span>{m.title}</span>
-                          <ArrowDown size={16} />
-                        </a>
-                      </li>
-                    ))
-                  : sections.map((item) => (
-                      <li key={item.id}>
-                        <a href={`#${item.id}`}>
-                          <span>{item.label}</span>
-                          <ArrowDown size={16} />
-                        </a>
-                      </li>
-                    ))}
-              </ul>
-            </aside>
+                    : "What the system covers."}
+                </h2>
+                <ul>
+                  {s.modules.map((m, i) => (
+                    <li key={m.title}>
+                      <a href={`#module-${i}`}>
+                        <span>{m.title}</span>
+                        <ArrowDown size={16} />
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </aside>
+            ) : (
+              <div className="service-hero-note">
+                <span className="eyebrow">
+                  {s.slug === "software-development"
+                    ? "Business software"
+                    : s.slug === "ai-solutions-support"
+                      ? "AI solutions & AI support"
+                      : "Sales operations"}
+                </span>
+                <p>
+                  {s.slug === "software-development"
+                    ? "Your processes. Your information. Your requirements."
+                    : s.slug === "ai-solutions-support"
+                      ? "Start with the work you need help with."
+                      : "A closer look at the work around a sale."}
+                </p>
+                <a href="#overview" className="text-link">
+                  Explore the service
+                  <ArrowDown size={18} />
+                </a>
+              </div>
+            )}
           </div>
         </div>
       </section>
@@ -87,24 +102,19 @@ export function SolutionEnquiry({ solution: s }: { solution: Solution }) {
       <div className="container enquiry-guidance-grid">
         <div data-reveal>
           <span className="eyebrow">
-            {s.kind === "product" ? "Your demonstration" : "Your enquiry"}
+            {s.kind === "product" ? "Request a demonstration" : "Get in touch"}
           </span>
           <h2>{s.enquiryTitle}</h2>
         </div>
         <div data-reveal>
           <p>{s.enquiryText}</p>
-          <ul className="enquiry-checklist">
-            {s.enquiryPoints.map((point) => (
-              <li key={point}>
-                <Check size={17} />
-                {point}
-              </li>
-            ))}
-          </ul>
           <Link href={enquiryHref(s)} className="button button-dark">
             {s.cta}
             <ArrowUpRight size={21} />
           </Link>
+          <a className="cta-email" href="mailto:sales@quantumbh.net">
+            sales@quantumbh.net
+          </a>
         </div>
       </div>
     </section>

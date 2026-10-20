@@ -35,8 +35,11 @@ export function Motion() {
         },
         { threshold: 0.12, rootMargin: "0px 0px -24px 0px" },
       );
-      document.querySelectorAll<HTMLElement>("[data-reveal]").forEach((el) => {
-        if (el.getBoundingClientRect().top < innerHeight - 40) {
+      const revealTargets = Array.from(
+        document.querySelectorAll<HTMLElement>("[data-reveal]"),
+      ).map((el) => ({ el, top: el.getBoundingClientRect().top }));
+      revealTargets.forEach(({ el, top }) => {
+        if (top < innerHeight - 40) {
           el.classList.add("revealed");
           return;
         }
@@ -56,6 +59,10 @@ export function Motion() {
         frame = 0;
         const height = innerHeight;
         const travel = document.documentElement.scrollHeight - height;
+        const scenePositions =
+          innerWidth < 800
+            ? []
+            : scenes.map((el) => ({ el, rect: el.getBoundingClientRect() }));
         document.documentElement.style.setProperty(
           "--reading-progress",
           String(travel > 0 ? scrollY / travel : 0),
@@ -63,9 +70,7 @@ export function Motion() {
         document
           .querySelector(".site-header")
           ?.classList.toggle("is-scrolled", scrollY > 40);
-        if (innerWidth < 800) return;
-        scenes.forEach((el) => {
-          const rect = el.getBoundingClientRect();
+        scenePositions.forEach(({ el, rect }) => {
           if (rect.bottom > 0 && rect.top < height) {
             const amount = Number(el.dataset.parallax || 0.08);
             const offset = Math.max(

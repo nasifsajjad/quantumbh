@@ -1,114 +1,77 @@
-"use client";
 import Link from "next/link";
-import { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { solutionHref, solutions } from "@/lib/content";
 const groups = [
   {
-    name: "Business systems",
-    description:
-      "Software for your finances, employees and sales administration.",
+    title: "Business systems",
+    description: "Accounts, employees and sales administration.",
     slugs: ["erp-accounting", "hr-management", "sales-automation"],
   },
   {
-    name: "Healthcare & education",
-    description: "Management systems for hospitals, clinics and schools.",
+    title: "Healthcare & education",
+    description: "The daily work behind hospitals, clinics and schools.",
     slugs: ["hospital-management", "school-management"],
   },
   {
-    name: "Software development & AI",
-    description:
-      "Discuss custom business software or an AI-related requirement.",
+    title: "Development & AI",
+    description: "Software and assistance around a business requirement.",
     slugs: ["software-development", "ai-solutions-support"],
   },
 ];
 export function SolutionDirectory() {
-  const [active, setActive] = useState(0);
-  function selectByKey(e: React.KeyboardEvent<HTMLButtonElement>, i: number) {
-    if (!["ArrowDown", "ArrowUp", "Home", "End"].includes(e.key)) return;
-    e.preventDefault();
-    const next =
-      e.key === "Home"
-        ? 0
-        : e.key === "End"
-          ? 2
-          : (i + (e.key === "ArrowDown" ? 1 : 2)) % 3;
-    setActive(next);
-    document.getElementById(`solution-tab-${next}`)?.focus();
-  }
   return (
     <section id="solutions" className="solution-directory section-pad">
       <div className="container">
-        <div className="section-intro" data-reveal>
-          <span className="eyebrow">Our solutions</span>
-          <h2>Find the right solution.</h2>
+        <div className="index-heading" data-reveal>
+          <div>
+            <span className="eyebrow">Our solutions</span>
+            <h2>Find your starting point.</h2>
+          </div>
           <p>
-            From your accounts to your people, explore practical systems and
-            services for businesses and institutions in Bahrain and the GCC.
+            Business systems and software services for the work your
+            organisation needs to manage.
           </p>
         </div>
-        <div className="directory-grid" data-reveal>
-          <div
-            className="directory-tabs"
-            role="tablist"
-            aria-label="Solution categories"
-            aria-orientation="vertical"
-          >
-            {groups.map((g, i) => (
-              <button
-                key={g.name}
-                id={`solution-tab-${i}`}
-                type="button"
-                role="tab"
-                aria-selected={active === i}
-                aria-controls={`solution-group-${i}`}
-                tabIndex={active === i ? 0 : -1}
-                onClick={() => setActive(i)}
-                onKeyDown={(e) => selectByKey(e, i)}
-              >
-                {g.name}
-                <ArrowUpRight size={20} />
-              </button>
-            ))}
-          </div>
-          <div className="directory-content">
-            {groups.map((g, i) => (
-              <div
-                key={g.name}
-                id={`solution-group-${i}`}
-                role="tabpanel"
-                aria-labelledby={`solution-tab-${i}`}
-                hidden={active !== i}
-                tabIndex={0}
-                className="directory-panel"
-              >
-                <p className="directory-description">{g.description}</p>
-                {g.slugs.map((slug) => {
+        <div className="solution-index" data-stagger>
+          {groups.map((group, i) => (
+            <div className="solution-group" key={group.title} data-reveal>
+              <div className="solution-group-heading">
+                <span className="small-index">0{i + 1}</span>
+                <h3>{group.title}</h3>
+                <p>{group.description}</p>
+              </div>
+              <div className="solution-group-links">
+                {group.slugs.map((slug) => {
                   const s = solutions.find((s) => s.slug === slug)!;
                   return (
                     <Link
+                      className="solution-index-link"
                       key={slug}
                       href={solutionHref(slug)}
-                      className="directory-solution"
                     >
                       <div>
-                        <h3>{s.name}</h3>
+                        <h4>
+                          {slug === "school-management"
+                            ? "Classveew · School Management"
+                            : s.name}
+                        </h4>
                         <p>{s.short}</p>
                       </div>
-                      <ArrowUpRight size={23} />
+                      <ArrowUpRight size={21} />
                     </Link>
                   );
                 })}
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
-        <Link className="full-width-link" href="/contact">
-          <span>
-            Not sure which solution fits? Let’s talk about your business.
-          </span>
-          <ArrowUpRight size={25} />
-        </Link>
+        <div className="directory-help">
+          <p>Not sure which system fits?</p>
+          <Link href="/contact" className="text-link">
+            Tell us what you need
+            <ArrowUpRight size={19} />
+          </Link>
+        </div>
       </div>
     </section>
   );

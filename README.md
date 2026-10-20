@@ -73,3 +73,21 @@ The software imagery and interactive ERP, HR, hospital and Classveew previews ar
 npm run typecheck
 npm run build
 ```
+
+## Brand and sharing assets
+
+`public/brand/` contains simplified vector marks and horizontal, inverse and stacked wordmarks based on the supplied Quantum identity. Classveew uses a typographic treatment until its own logo is supplied. Headings use self-hosted Instrument Sans; body text uses DM Sans. Both font licences are included in `public/fonts/`.
+
+Each page has a dedicated 1200 × 630 sharing image in `public/social/`, declared through Open Graph and Twitter metadata. The homepage workspace image is an AI-generated editorial scene; it is labelled illustrative and does not represent an actual Quantum interface or office.
+
+## Measurement
+
+Analytics is off by default. To collect measurements, enable Web Analytics for this project in Vercel, set `NEXT_PUBLIC_ENABLE_ANALYTICS=true`, then redeploy. Page-view URLs have query strings removed. Custom events contain only solution names, page paths, preview selections and enquiry actions; visitor names, email addresses, messages and company names are excluded.
+
+Events cover solution page views, demo/service interest, preview tab selection, preview enlargement, prepared email drafts, email-app links and copied enquiries. An opened email draft is not recorded as a sent enquiry. Successful email delivery cannot be measured through the current draft-based form.
+
+For local verification, the same events dispatch `quantum:measurement` on `window` even while remote analytics is disabled. Details are `{ event, properties }`.
+
+## Content requiring company input
+
+Direct form delivery, pricing, buying/implementation steps, detailed software-development/AI/sales-automation scope, real product screenshots, Classveew's official logo, customer evidence and company photographs remain dependent on confirmed information. Do not replace these gaps with invented features, testimonials, figures, timelines or generated staff photographs.
