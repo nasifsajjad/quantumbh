@@ -2,7 +2,7 @@ import { socialMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Check } from "lucide-react";
 import { ContactCTA, FAQ, TextLink } from "@/components/ui";
 import { Heading } from "@/components/heading";
 import { SolutionDirectory } from "@/components/solution-directory";
@@ -26,52 +26,70 @@ export default function Home() {
       <section className="home-hero">
         <div className="hero-copy">
           <span className="eyebrow hero-eyebrow">
-            Quantum Software Solutions
+            Business software · Bahrain & GCC
           </span>
           <Heading
             lines={["Business software", "for Bahrain", "and the GCC."]}
           />
           <div className="hero-bottom">
             <p>
-              Cloud business systems, custom software development, and AI
-              solutions and support. A Bahrain-based partner for the systems
-              behind your daily operations.
+              Quantum Software Solutions provides cloud business systems, custom
+              software development, and AI solutions and support. Software for
+              your accounts, people and everyday operations, from a
+              Bahrain-based technology partner.
             </p>
-            <div className="hero-actions">
-              <Link href={demoHref()} className="button button-dark hero-cta">
-                Request a demo
-                <ArrowUpRight size={22} />
-              </Link>
-              <a href="#solutions" className="hero-explore">
-                Explore solutions
-                <ArrowDown size={17} />
-              </a>
-            </div>
-            <div className="hero-disciplines">
-              <span>Finance</span>
-              <span>People</span>
-              <span>Operations</span>
-            </div>
+            <Link href={demoHref()} className="button button-gold hero-cta">
+              Request a demo
+              <ArrowUpRight size={25} />
+            </Link>
+            <a href="#solutions" className="hero-explore">
+              Explore our solutions
+              <ArrowDown size={16} />
+            </a>
           </div>
         </div>
-        <div className="hero-visual">
-          <div className="hero-photo-wrap">
-            <Image
-              src="/images/quantum-workspace.webp"
-              alt="Generated editorial scene of a laptop displaying a conceptual business software interface"
-              fill
-              priority
-              fetchPriority="high"
-              quality={90}
-              sizes="(max-width:800px) 100vw,50vw"
-            />
-          </div>
-          <div className="hero-photo-footer">
-            <Link href="/solutions/erp-accounting">
-              ERP & Accounting
-              <ArrowUpRight size={18} />
-            </Link>
-            <span>Illustrative software scene</span>
+        <div className="hero-visual" data-parallax="0.06">
+          <Image
+            src="/images/software-editorial.webp"
+            alt="Illustrative accounting software on a laptop in a sunlit workspace"
+            fill
+            priority
+            fetchPriority="high"
+            quality={90}
+            sizes="(max-width: 800px) 100vw, 50vw"
+            className="parallax-image"
+          />
+          <span className="hero-image-caption">
+            Illustrative product visual
+          </span>
+          <div className="hero-note">
+            <span className="eyebrow">A clearer working day</span>
+            <ul>
+              <li>
+                <span className="check-disc" aria-hidden="true">
+                  <Check size={17} />
+                </span>
+                <span>Accounts, inventory and financial reporting</span>
+              </li>
+              <li>
+                <span className="check-disc" aria-hidden="true">
+                  <Check size={17} />
+                </span>
+                <span>People, payroll, attendance and leave</span>
+              </li>
+              <li>
+                <span className="check-disc" aria-hidden="true">
+                  <Check size={17} />
+                </span>
+                <span>Systems for healthcare and education</span>
+              </li>
+              <li>
+                <span className="check-disc" aria-hidden="true">
+                  <Check size={17} />
+                </span>
+                <span>Custom software and practical AI support</span>
+              </li>
+            </ul>
           </div>
         </div>
       </section>
